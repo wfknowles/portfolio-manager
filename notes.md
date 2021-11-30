@@ -181,3 +181,91 @@ How to create an application using MongoDB, Express.js, React.js, and Node.js
             signToken
         };
         ```
+
+## Setup Data Models
+* Write 'index.js'
+    * Require models
+        ```
+        const ModelA = require('./ModelA');
+        const ModelB = require('./ModelB');
+        ```
+    * Export models
+        ```
+        module.exports = { ModelA, ModelB };
+        ```
+* Write models
+    * Require mongoose
+        ```
+        const mongoose = require('mongoose');
+        ```
+    * Destructure mongoose and access Schema object
+        ```
+        const { Schema } = mongoose;
+        ```
+    * Create schema
+        ```
+        const modelaSchema = new Schema({
+            // see docs for how to format schemas: https://mongoosejs.com/docs/guide.html#schemas
+        });
+        ```
+    * Create model
+        ```
+        const ModelA = mongoose.model('ModelA', orderSchema);
+        ```
+    * Export model
+        ```
+        module.exports = ModelA;
+        ```
+
+## Setup GraphQL Data Controllers
+* Write 'index.js'
+    * Require and export 'typeDefs' and 'resolvers'
+        ```
+        const typeDefs = require('./typeDefs');
+        const resolvers = require('./resolvers');
+
+        module.exports = { typeDefs, resolvers };
+        ```
+* Write 'typeDefs.js'
+    * Require and destructure apollo-express-server
+        ```
+        const { gql } = require('apollo-server-express');
+        ```
+    * Setup 'typeDefs' constant
+        ```
+        const typeDefs = gql`
+            // see docs for how to format typeDefs: https://www.apollographql.com/docs/apollo-server/getting-started/#step-3-define-your-graphql-schema
+        `;
+        ```
+    * Export typeDefs
+        ```
+        module.exports = typeDefs;
+        ```
+* Write 'resolvers.js'
+    * Require and destructure apollo-express-server
+        ```
+        const { AuthenticationError } = require('apollo-server-express');
+        ```
+    * Require and destructure models
+        ```
+        const { ModelA, ModelB } = require('../models');
+        ```
+    * Require and destructure auth utility
+        ```
+        const { signToken } = require('../utils/auth');
+        ```
+    * Setup 'resolvers' constant
+        ```
+        const resolvers = {
+            Query: {
+                // see docs for how to format queries: https://www.apollographql.com/docs/tutorial/resolvers/
+            },
+            Mutation: {
+                // see docs for hot to format mutations: https://www.apollographql.com/docs/tutorial/mutation-resolvers/
+            }
+        };
+        ```
+    * Export resolvers
+        ```
+        module.exports = resolvers;
+        ```
