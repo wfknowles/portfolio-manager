@@ -36,7 +36,7 @@
     * Create directory 'pages' and inside it, create files for each page of the application
     * Create directory 'components' and inside it, create directories for necessary custom components
     * Create directory 'utils' and inside it, create 'auth.js', 'actions.js', 'mutations.js', 'queries.js', and 'reducers.js'
-    * Create directory '__tests__', create test files for validating components and reducers
+    * Create directory '\__tests\__', create test files for validating components and reducers
 
 ## Setup Server
 * Write 'server.js'
