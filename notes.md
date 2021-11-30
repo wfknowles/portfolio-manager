@@ -5,20 +5,22 @@
     * In project root directory, run ```npm init```
         * Update package.json
             * main: ```server/server.js```
-            * scripts: ```
-                "start": "node server/server.js",
-                "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-                "install": "cd server && npm i && cd ../client && npm i",
-                "seed": "cd server && npm run seed",
-                "build": "cd client && npm run build"
+            * scripts: 
+            ```
+            "start": "node server/server.js",
+            "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+            "install": "cd server && npm i && cd ../client && npm i",
+            "seed": "cd server && npm run seed",
+            "build": "cd client && npm run build"
             ```
         * run: ```npm install concurrently --save-dev```
     * Create directory 'server' and run ```npm init```
         * Edit package.json
-            * scripts: ```
-                "start": "node server.js",
-                "watch": "nodemon",
-                "seed": "node config/seeds.js"
+            * scripts: 
+            ```
+            "start": "node server.js",
+            "watch": "nodemon",
+            "seed": "node config/seeds.js"
             ```
         * run: ```npm install apollo-server-express bcrypt express graphql jsonwebtoken mongoose```
     * Create directory 'client' and run ```npx create-react-app <app-name>```
