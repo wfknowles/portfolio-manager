@@ -25,7 +25,10 @@ How to create an application using MongoDB, Express.js, React.js, and Node.js
                 ```
         * run: ```npm install apollo-server-express bcrypt express graphql jsonwebtoken mongoose dotenv```
         * run: ```npm install nodemon --save-dev```
-    * Create directory 'client' and run ```npx create-react-app <app-name>```
+    * Create directory 'client'
+        * run ```npx create-react-app <app-name>```
+        * run ```npm install react-bootstrap @apollo/client graphql jwt-decode react-router-dom```
+
 * Create Server and Setup Mongoose
     * Create file 'server.js' and setup express server
     * Create directory 'config' and file 'connection.js' within it

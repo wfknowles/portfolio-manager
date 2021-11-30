@@ -11,12 +11,16 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-// layout components
+// partial components
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 // page components
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Admin from './pages/Admin';
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -43,13 +47,13 @@ function App() {
       <div className="app">
         <Router>
           <Header />
-            <div className="content-wrap">  
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" component={LoginForm} />
-                <Route exact path="/signup" component={SignupForm} />
-              </Switch>
-            </div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/admin" component={Admin} />
+            <Route component={NoMatch} />
+          </Switch>
           <Footer />
         </Router>
       </div>
