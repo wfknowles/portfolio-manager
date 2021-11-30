@@ -250,10 +250,6 @@ How to create an application using MongoDB, Express.js, React.js, and Node.js
         ```
         const { ModelA, ModelB } = require('../models');
         ```
-    * Require and destructure auth utility
-        ```
-        const { signToken } = require('../utils/auth');
-        ```
     * Setup 'resolvers' constant
         ```
         const resolvers = {
