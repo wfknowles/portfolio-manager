@@ -3,15 +3,13 @@ import { Row, Col } from 'react-bootstrap';
 import './style.css';
 
 function Footer() {
-  const getYear = () => {
-    return new Date().getFullYear();
-  }
+  const year = new Date().getFullYear();
 
   return (
     <footer className="">
       <Row>
         <Col>
-          <p>&copy; Copyright {getYear}</p>
+          <p className="text-center">&copy; Copyright {year}</p>
         </Col>
       </Row>
     </footer>

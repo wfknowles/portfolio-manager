@@ -44,7 +44,6 @@ const apolloClient = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <div className="app">
         <Router>
           <Header />
           <Switch>
@@ -56,7 +55,6 @@ function App() {
           </Switch>
           <Footer />
         </Router>
-      </div>
     </ApolloProvider>
   )
 }

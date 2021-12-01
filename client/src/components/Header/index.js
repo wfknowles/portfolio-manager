@@ -7,8 +7,8 @@ function Header() {
   
   return (
     <header>
-        <Navbar bg="dark" expand="lg" variant="dark" className="">
-        <Container>
+      <Navbar bg="dark" variant="dark" expand="lg">
+          <Container>
             <Navbar.Brand href="../">
             <img
                 src={logo}
@@ -19,21 +19,21 @@ function Header() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="headerNavbar" />
             <Navbar.Collapse id="headerNavbar">
-            <Nav className="">
+            <Nav className="me-auto">
                 {Auth.loggedIn() ? (
                 <>
                     <Nav.Link onClick={Auth.logout()}>Logout</Nav.Link>
                 </>
                 ) : (
                 <>
-                    <Nav.Link href="/login" color="light">Log In</Nav.Link>
-                    <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    <Nav.Link href="/login">Log In</Nav.Link>
+                    <Nav.Link href="/register">Register</Nav.Link>
                 </>
                 )}
             </Nav>
             </Navbar.Collapse>
         </Container>
-        </Navbar>
+      </Navbar>
     </header>
   )
 }
