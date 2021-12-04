@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Row, Col, Form, Button } from 'react-bootstrap';
-import FormInput from './Input.js'
+import FormInput from './FormInput.js'
 
 function FormAddProjectTech({change}) {
   

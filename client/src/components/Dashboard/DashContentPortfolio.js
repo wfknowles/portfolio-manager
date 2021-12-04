@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import FormAddProject from '../../Form/AddProject.js';
+import FormAddProject from '../Form/FormAddProject.js';
 
 function DashContentPortfolio() {
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Navbar, Nav, Col } from 'react-bootstrap';
-import DashMenuItem from './Menu/Item.js';
+import DashMenuItem from './DashMenuItem.js';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { UPDATE_CURRENT } from '../../utils/GlobalState/actions';
 

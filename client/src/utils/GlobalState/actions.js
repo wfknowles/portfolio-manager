@@ -1,3 +1,3 @@
 export const ADD_PROJECT = 'ADD_PROJECT';
-
+export const SET_OPTIONS = 'SET_OPTIONS';
 export const UPDATE_CURRENT = 'UPDATE_CURRENT';

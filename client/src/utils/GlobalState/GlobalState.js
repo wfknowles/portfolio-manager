@@ -9,6 +9,7 @@ const AppProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useAppReducer({
     currentDash: '',
     project: {},
+    options: {},
     projects: []
   });
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import DashContentDashboard from './Content/Dashboard.js';
-import DashContentPortfolio from './Content/Portfolio.js';
-import DashContentAccount from './Content/Account.js';
-import DashContentOptions from './Content/Options.js';
+import DashContentDashboard from './DashContentDashboard.js';
+import DashContentPortfolio from './DashContentPortfolio.js';
+import DashContentAccount from './DashContentAccount.js';
+import DashContentOptions from './DashContentOptions.js';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 
 

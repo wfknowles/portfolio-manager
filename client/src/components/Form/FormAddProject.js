@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-import FormInput from './Input.js';
-import AddProjectTech from './AddProjectTech.js';
+import FormInput from './FormInput.js';
+import AddProjectTech from './FormPartialAddProjectTech.js';
 import ReactForms from '../../utils/ReactForms';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
