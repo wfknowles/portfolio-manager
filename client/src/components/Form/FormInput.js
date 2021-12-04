@@ -5,7 +5,7 @@ import { addClass } from '../../utils/helpers';
 
 function FormInput ({klass, type, name, label, placeholder, change}) {
 
-  const inputTypes = [ "", "text", "tel", "email", "password", "search", "number"];
+  const inputTypes = [ "", "text", "tel", "email", "password", "search", "number", "image"];
 
   return (
     <>

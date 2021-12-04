@@ -30,7 +30,7 @@ function DashContentPortfolio() {
           
         <Row>
           <Col sm="12">
-            Projects go here...
+            {/* Projects go here... */}
           </Col>
         </Row>
         

@@ -64,15 +64,23 @@ function FormAddOptions() {
           <FormInput 
             klass=""
             type="text"
-            name="options.logo"
-            label="Logo"
+            name="options.brand"
+            label="Brand"
+            placeholder="http://example.com..."
+            change={handleChange}
+          />
+          <FormInput 
+            klass=""
+            type="text"
+            name="options.featureImage"
+            label="Feature Image"
             placeholder="http://example.com..."
             change={handleChange}
           />
           <FormInput 
             klass=""
             type="textarea"
-            name="options.description"
+            name="options.bio"
             label="Description"
             placeholder="Lorem ipsum dolar sit amet"
             change={handleChange}

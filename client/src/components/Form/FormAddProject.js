@@ -38,6 +38,7 @@ function FormAddProject({toggle}) {
   
   return (
     <Form className="" onSubmit={handleSubmit}>
+      <h2>Add Project</h2>
       <FormInput 
         klass=""
         type="text"
@@ -73,7 +74,7 @@ function FormAddProject({toggle}) {
       } */}
       
       <Button color="primary" type="submit">Add Project</Button>
-      <Button variant="secondary" type="submit" onClick={(e) => {toggle(false)}}>Cancel</Button>
+      <Button className="ms-3" variant="secondary" type="submit" onClick={(e) => {toggle(false)}}>Cancel</Button>
     </Form>
   )
 }
