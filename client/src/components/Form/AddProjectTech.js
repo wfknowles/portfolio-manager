@@ -1,0 +1,146 @@
+import React from 'react';
+// import { Row, Col, Form, Button } from 'react-bootstrap';
+import FormInput from './Input.js'
+
+function FormAddProjectTech({change}) {
+  
+  return (
+    <>
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.sequelize"
+        label="Sequelize"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.mongoose"
+        label="Mongoose"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.graphql"
+        label="GraphQL"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.mongodb"
+        label="MongoDB"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.mysql"
+        label="MySQL"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.postgres"
+        label="PostgreSQL"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.express"
+        label="Express.js"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.node"
+        label="Node.js"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.html"
+        label="HTML"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.css"
+        label="CSS"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.bootstrap5"
+        label="Bootstrap 5"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.bootstrap6"
+        label="Bootstrap 6"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.javascript"
+        label="Javascript"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.jsx"
+        label="JSX"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.react"
+        label="React"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.jquery"
+        label="jQuery"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.php"
+        label="PHP"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.ruby"
+        label="Ruby"
+        change={change}
+      />
+      <FormInput 
+        klass=""
+        type="checkbox"
+        name="project.tech.ror"
+        label="Ruby On Rails"
+        change={change}
+      />
+    </>
+  )
+}
+
+export default FormAddProjectTech;

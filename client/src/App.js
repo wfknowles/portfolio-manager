@@ -10,15 +10,12 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-// partial components
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { AppProvider } from "./utils/GlobalState/GlobalState";
 
 // page components
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
+// import Login from './pages/Login';
+// import Register from './pages/Register';
 import Admin from './pages/Admin';
 import NoMatch from './pages/NoMatch';
 
@@ -44,17 +41,15 @@ const apolloClient = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
+      <AppProvider>
         <Router>
-          <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
             <Route exact path="/admin" component={Admin} />
             <Route component={NoMatch} />
           </Switch>
-          <Footer />
         </Router>
+      </AppProvider>
     </ApolloProvider>
   )
 }

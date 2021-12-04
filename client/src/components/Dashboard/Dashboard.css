@@ -1,0 +1,38 @@
+.menu {
+    display: flex;
+}
+
+/* .menu.menu-wrapper {
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+} */
+
+/* .menu.menu-item {
+    width: 100%;
+    list-style: none;
+} */
+
+/* .menu.menu-dark {
+    background-color: rgba(0,0,0,1.0);
+    color: rgba(255,255,255,1.0);
+} */
+
+/* MEDIA QUERY FOR TABLETS AND LARGER */
+@media screen and (min-width: 768px) {
+    #dashMenu {
+        height: 100vh;
+        background-color: rgba(33,37,41,1.0);
+        color: rgba(255,255,255,1.0);
+    }
+
+    #dashContentPortfolio {
+        overflow: auto;
+    }
+
+    .menu.menu-wrapper {
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
