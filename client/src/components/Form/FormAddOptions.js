@@ -2,14 +2,17 @@ import React, { useEffect } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import FormInput from './FormInput.js';
-import ReactForms from '../../utils/ReactForms';
+import ReactForms from '../../utils/ReactForms/ReactForms';
+import FormCheckboxArray from './FormCheckboxArray';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { SET_OPTIONS } from '../../utils/GlobalState/actions';
 
+import './Form.css';
+
 function FormAddOptions() {
   const [state, dispatch] = useAppContext();
-  const { options } = state;
+  const { tech, options } = state;  
 
   // should this all be changed to onBlur?
   const handleChange = (e) => {
@@ -26,9 +29,9 @@ function FormAddOptions() {
     }
   }
 
-  useEffect(() => {
-    console.log({state});
-  },[state])
+  // useEffect(() => {
+  //   console.log({state}, techArray);
+  // },[state, techArray]);
 
 
   const handleSubmit = (e) => {
@@ -40,42 +43,56 @@ function FormAddOptions() {
   }
   
   return (
-    <Form className="" onSubmit={handleSubmit}>
-      <Button variant="primary" type="submit">Update Options</Button>
-      <FormInput 
-        klass=""
-        type="text"
-        name="options.title"
-        label="Title"
-        placeholder="Site Title..."
-        change={handleChange}
-      />
-      <FormInput 
-        klass=""
-        type="text"
-        name="options.logo"
-        label="Logo"
-        placeholder="http://example.com..."
-        change={handleChange}
-      />
-      <FormInput 
-        klass=""
-        type="textarea"
-        name="options.description"
-        label="Description"
-        placeholder="Lorem ipsum dolar sit amet"
-        change={handleChange}
-      />
-      
-      {/* {
-        error &&
-          <Form.Group className="error">
-              <p className="">There's been some errors...</p>
-          </Form.Group>
-      } */}
-      
-      <Button variant="primary" type="submit">Update Options</Button>
-    </Form>
+    <>
+      <Row className="pb-3">
+        <Col>
+          <Button variant="primary" type="submit">Update Options</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <Form className="" onSubmit={handleSubmit}>
+          
+          <FormInput 
+            klass=""
+            type="text"
+            name="options.title"
+            label="Title"
+            placeholder="Site Title..."
+            change={handleChange}
+          />
+          <FormInput 
+            klass=""
+            type="text"
+            name="options.logo"
+            label="Logo"
+            placeholder="http://example.com..."
+            change={handleChange}
+          />
+          <FormInput 
+            klass=""
+            type="textarea"
+            name="options.description"
+            label="Description"
+            placeholder="Lorem ipsum dolar sit amet"
+            change={handleChange}
+          />
+
+          <FormCheckboxArray data={tech} name="options.skills" klass="" change={handleChange}/>
+          
+          {/* {
+            error &&
+              <Form.Group className="error">
+                  <p className="">There's been some errors...</p>
+              </Form.Group>
+          } */}
+          
+          <Button variant="primary" type="submit">Update Options</Button>
+        </Form>
+        </Col>
+      </Row>
+    </>
+    
   )
 }
 

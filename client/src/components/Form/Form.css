@@ -1,0 +1,14 @@
+.form-label {
+    font-weight: 500;
+}
+
+.form-group, .checkbox-group {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.checkbox-group .form-group {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+

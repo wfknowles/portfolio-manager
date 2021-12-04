@@ -7,30 +7,27 @@ function DashContentPortfolio() {
   const [form, toggleForm] = useState(false);
   
   return (
-    <Row sm="12" md="10" id="dashContentPortfolio">
+    <Row sm="12" md="10" id="dashContentPortfolio" className="pt-3">
       <Col sm="12">
-        <Row>
-          <Col sm="12">
-            <h1>Portfolio</h1>
-            {
-              !form && (
-                <Button className="add-item" variant="primary" type="submit" onClick={toggleForm}>Add Project</Button>
-              )
-            }
-            
-          </Col>
-        </Row>
-        <Row>
-          <Col sm="12">
-            {
-              form && (
-                <>
+        {
+          !form && (
+            <Row>
+              <Col sm="12">
+                <Button className="" variant="primary" type="submit" onClick={toggleForm}>Add Project</Button>
+              </Col>
+            </Row>
+          )
+        }
+        {
+          form && (
+            <Row>
+              <Col sm="12">
                 <FormAddProject toggle={toggleForm}/>
-                </>
-              )
-            }
-          </Col>
-        </Row>
+              </Col>
+            </Row>
+          )
+        }
+          
         <Row>
           <Col sm="12">
             Projects go here...

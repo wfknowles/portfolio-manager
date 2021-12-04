@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Navbar, Nav, Col } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import DashMenuItem from './DashMenuItem.js';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { UPDATE_CURRENT } from '../../utils/GlobalState/actions';
@@ -20,8 +20,8 @@ function DashMenu(props) {
   }
     
   return (
-    <Col sm="12" md="2" id="dashMenu">
-      <Navbar bg="dark" variant="dark" expand="lg">
+    <div id="dashMenu" className="gradient drop-shadow">
+      <Navbar variant="dark" expand="lg">
         <Navbar.Toggle aria-controls="menuNavbar" />
         <Navbar.Collapse id="menuNavbar">
         <Nav className="menu menu-wrapper mx-auto">
@@ -52,7 +52,7 @@ function DashMenu(props) {
         </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </Col>
+    </div>
   )
 }
 

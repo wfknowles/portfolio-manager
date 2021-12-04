@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+// import { Col } from 'react-bootstrap';
+import DashContentHeader from './DashContentHeader.js';
 import DashContentDashboard from './DashContentDashboard.js';
 import DashContentPortfolio from './DashContentPortfolio.js';
 import DashContentAccount from './DashContentAccount.js';
@@ -12,7 +13,8 @@ function DashContent() {
   const [state, dispatch] = useAppContext();
 
   return (
-    <Col sm="12" md="10" id="dashContent">
+    <div id="dashContent">
+      <DashContentHeader />
       {
         state.currentDash === "dashboard" && (
           <DashContentDashboard />
@@ -33,7 +35,7 @@ function DashContent() {
           <DashContentOptions />
         )
       }
-    </Col>
+    </div>
   )
 }
 

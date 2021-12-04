@@ -1,9 +1,25 @@
+import titleize from './lib/titleize';
+
 class ReactForms {
 
   constructor() {
 
     this.debug = true;
 
+  }
+
+  titleize(string) {
+
+    try {
+
+      return titleize(string);
+
+    } catch (error) {
+
+      throw new SyntaxError(`ReactFormDataError: ${error}`);
+
+    }
+    
   }
 
   value(event) {
@@ -96,7 +112,7 @@ class ReactForms {
       if (stateTest[key] && incomingStateTest[key]) {
 
         // if the data doesnt match
-        if (stateTest[key] != incomingStateTest[key]) {
+        if (stateTest[key] !== incomingStateTest[key]) {
 
           // if both states have children...
           if (stateTest[key][keys[i+1]] && incomingStateTest[key][keys[i+1]]) {

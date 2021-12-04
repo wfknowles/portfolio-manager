@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { useAppReducer } from './reducers';
+import { techOptions } from '../staticData.js';
 
 const AppContext = createContext();
 const { Provider } = AppContext;
@@ -10,7 +11,8 @@ const AppProvider = ({ value = [], ...props }) => {
     currentDash: '',
     project: {},
     options: {},
-    projects: []
+    projects: [],
+    tech: techOptions
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

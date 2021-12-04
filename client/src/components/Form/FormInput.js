@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { addClass } from '../../utils/helpers';
 
 
 function FormInput ({klass, type, name, label, placeholder, change}) {
@@ -10,7 +11,7 @@ function FormInput ({klass, type, name, label, placeholder, change}) {
     <>
     {
       inputTypes.includes(type) && (
-        <Form.Group className={klass}>
+        <Form.Group className={addClass('form-group', klass)}>
           <Form.Label htmlFor={name}>{label}</Form.Label>
           <Form.Control type={type} name={name} placeholder={placeholder} onChange={change} />
         </Form.Group >
@@ -18,7 +19,7 @@ function FormInput ({klass, type, name, label, placeholder, change}) {
     }
     {
       type === 'checkbox' && (
-        <Form.Group className={klass}>
+        <Form.Group className={addClass('form-group', klass)}>
           {/* <Form.Label htmlFor={name}>{label}</Form.Label> */}
           <Form.Check type={type} name={name} label={label} onChange={change}/>
         </Form.Group >
@@ -26,7 +27,7 @@ function FormInput ({klass, type, name, label, placeholder, change}) {
     }
     {
       type === 'textarea' && (
-        <Form.Group className={klass}>
+        <Form.Group className={addClass('form-group', klass)}>
           <Form.Label htmlFor={name}>{label}</Form.Label>
           <Form.Control as={type} rows={3} name={name} onChange={change}></Form.Control>
         </Form.Group >

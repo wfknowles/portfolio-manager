@@ -7,10 +7,10 @@ import './Dashboard.css';
 function Dashboard () {
 
   return (
-    <Row id="dashboard">
+    <div id="dashboard">
       <DashMenu />
       <DashContent />
-    </Row>
+    </div>
   )
 }
 

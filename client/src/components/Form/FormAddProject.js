@@ -2,15 +2,15 @@ import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import FormInput from './FormInput.js';
-import AddProjectTech from './FormPartialAddProjectTech.js';
-import ReactForms from '../../utils/ReactForms';
+import FormCheckboxArray from './FormCheckboxArray';
+import ReactForms from '../../utils/ReactForms/ReactForms';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { ADD_PROJECT } from '../../utils/GlobalState/actions';
 
 function FormAddProject({toggle}) {
   const [state, dispatch] = useAppContext();
-  const { project } = state;
+  const { tech, project } = state;
   const error = false;
 
   // should this all be changed to onBlur?
@@ -62,7 +62,8 @@ function FormAddProject({toggle}) {
         placeholder="Lorem ipsum dolar sit amet"
         change={handleChange}
       />
-      <AddProjectTech change={handleChange}/>
+
+      <FormCheckboxArray data={tech} name="options.skills" klass="" change={handleChange}/>
       
       {/* {
         error &&
