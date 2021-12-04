@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import FormInput from './FormInput.js';
@@ -16,15 +16,20 @@ function FormAddOptions() {
 
     // using ReactForms for retrieving and reducing form object
     const inputData = ReactForms.value(e);
-    const reducedOptions = ReactForms.reduce({options}, inputData);
+    const reducedOptions = ReactForms.reduce({options}, inputData)
 
     if (reducedOptions) {
-    //   dispatch({
-    //     type: ADD_PROJECT,
-    //     reducedProject
-    //   });
+      dispatch({
+        type: SET_OPTIONS,
+        reducedOptions
+      });
     }
   }
+
+  useEffect(() => {
+    console.log({state});
+  },[state])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +41,7 @@ function FormAddOptions() {
   
   return (
     <Form className="" onSubmit={handleSubmit}>
+      <Button variant="primary" type="submit">Update Options</Button>
       <FormInput 
         klass=""
         type="text"
@@ -68,8 +74,7 @@ function FormAddOptions() {
           </Form.Group>
       } */}
       
-      <Button color="primary" type="submit">Submit</Button>
-      {/* <Button variant="secondary" type="submit" onClick={(e) => {toggle(false)}}>Cancel</Button> */}
+      <Button variant="primary" type="submit">Update Options</Button>
     </Form>
   )
 }

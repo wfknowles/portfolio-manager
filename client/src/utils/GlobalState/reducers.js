@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import {
   ADD_PROJECT,
+  SET_OPTIONS,
   UPDATE_CURRENT
 } from './actions';
 
@@ -10,7 +11,12 @@ export const reducer = (state, action) => {
       case ADD_PROJECT:
         return {
           ...state,
-          ...action.reducedProject
+          ...action.reducedProject // reduced by ReactForms
+        };
+      case SET_OPTIONS:
+        return {
+          ...state,
+          ...action.reducedOptions // reduced by ReactForms
         };
       case UPDATE_CURRENT:
         return {
