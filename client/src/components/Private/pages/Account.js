@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-function DashContentAccount() {
+function PrivateAccount() {
   
   return (
-    <Row sm="12" md="10" id="dashContentAccount">
+    <Row sm="12" md="10" id="privateAccount">
       <Col sm="12">
         <h1>Account</h1>
       </Col>
@@ -12,4 +12,4 @@ function DashContentAccount() {
   )
 }
 
-export default DashContentAccount;
+export default PrivateAccount;

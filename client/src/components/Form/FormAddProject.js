@@ -7,10 +7,11 @@ import ReactForms from '../../utils/ReactForms/ReactForms';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { ADD_PROJECT } from '../../utils/GlobalState/actions';
+import { techOptions, projectStatusOptions } from '../../utils/staticData.js';
 
 function FormAddProject({toggle}) {
   const [state, dispatch] = useAppContext();
-  const { tech, project } = state;
+  const { project } = state;
   const error = false;
 
   // should this all be changed to onBlur?
@@ -41,6 +42,15 @@ function FormAddProject({toggle}) {
       <h2>Add Project</h2>
       <FormInput 
         klass=""
+        type="select"
+        name="project.status"
+        label="Status"
+        placeholder="Select project status..."
+        change={handleChange}
+        options={projectStatusOptions}
+      />
+      <FormInput 
+        klass=""
         type="text"
         name="project.title"
         label="Title"
@@ -49,7 +59,7 @@ function FormAddProject({toggle}) {
       />
       <FormInput 
         klass=""
-        type="text"
+        type="media"
         name="project.imageUrl"
         label="Featured Image"
         placeholder="http://example.com..."
@@ -63,8 +73,24 @@ function FormAddProject({toggle}) {
         placeholder="Lorem ipsum dolar sit amet"
         change={handleChange}
       />
-
-      <FormCheckboxArray data={tech} name="options.skills" klass="" change={handleChange}/>
+      <FormCheckboxArray data={techOptions} name="options.skills" klass="" change={handleChange}/>
+      <FormInput 
+        klass=""
+        type="text"
+        name="project.link"
+        label="Live URL"
+        placeholder=""
+        change={handleChange}
+      />
+      <FormInput 
+        klass=""
+        type="text"
+        name="project.github"
+        label="Github Repo"
+        placeholder=""
+        change={handleChange}
+      />
+      
       
       {/* {
         error &&

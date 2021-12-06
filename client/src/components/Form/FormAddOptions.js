@@ -7,12 +7,13 @@ import FormCheckboxArray from './FormCheckboxArray';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { SET_OPTIONS } from '../../utils/GlobalState/actions';
+import { techOptions } from '../../utils/staticData.js';
 
 import './Form.css';
 
 function FormAddOptions() {
   const [state, dispatch] = useAppContext();
-  const { tech, options } = state;  
+  const { options } = state;  
 
   // should this all be changed to onBlur?
   const handleChange = (e) => {
@@ -63,7 +64,7 @@ function FormAddOptions() {
           />
           <FormInput 
             klass=""
-            type="text"
+            type="media"
             name="options.brand"
             label="Brand"
             placeholder="http://example.com..."
@@ -71,7 +72,7 @@ function FormAddOptions() {
           />
           <FormInput 
             klass=""
-            type="text"
+            type="media"
             name="options.featureImage"
             label="Feature Image"
             placeholder="http://example.com..."
@@ -86,7 +87,7 @@ function FormAddOptions() {
             change={handleChange}
           />
 
-          <FormCheckboxArray data={tech} name="options.skills" klass="" change={handleChange}/>
+          <FormCheckboxArray data={techOptions} name="options.skills" klass="" change={handleChange}/>
           
           {/* {
             error &&

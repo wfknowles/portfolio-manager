@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import FormAddOptions from '../Form/FormAddOptions.js';
+import FormAddOptions from '../../Form/FormAddOptions.js';
 
-function DashContentOptions() {
+function PrivateOptions() {
   
   return (
-    <Row sm="12" md="10" id="dashContentOptions">
+    <Row sm="12" md="10" id="privateOptions">
       <Col sm="12">
           <FormAddOptions />
       </Col>
@@ -13,4 +13,4 @@ function DashContentOptions() {
   )
 }
 
-export default DashContentOptions;
+export default PrivateOptions;

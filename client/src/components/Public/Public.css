@@ -1,0 +1,57 @@
+#public {
+  display: flex;
+  flex-direction: column;
+  wrap: nowrap;
+  overflow: hidden;
+}
+
+#public.open {
+  width: 100%;
+}
+
+#public.sidebar {
+  width: calc(100% - 196px);
+}
+
+#public.closed {
+  width: 0%;
+}
+
+#viewPrivateMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 35px;
+}
+
+main {
+  min-height: calc(100vh - 150px);
+}
+
+header {
+  height: 100px;
+}
+
+footer {
+  height: 50px;
+}
+
+/* Header */
+.navbar-brand > img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* MEDIA QUERY FOR TABLETS AND LARGER */
+@media screen and (min-width: 768px) {
+  /* #private {
+    height: 100vh;
+  }
+
+  .menu-private {
+    height: 100vh;
+    width: 196px;
+  } */
+}
+  

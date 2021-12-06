@@ -1,0 +1,53 @@
+#private {
+    display: flex;
+    flex-direction: column;
+    wrap: nowrap;
+    overflow: hidden;
+    background: blue;
+}
+
+#private.open {
+    width: 100%;
+}
+
+#private.sidebar {
+    width: 196px;
+}
+
+#private.closed {
+    width: 0%;
+}
+
+#privateMenu {
+    display: flex;
+    flex-direction: column;
+    wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 196px;
+    background: rgb(17,17,25);
+    background: -moz-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    background: -webkit-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    background: linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#111119",endColorstr="#3d4a62",GradientType=1);
+}
+
+#privateMenu .menu-wrapper {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* MEDIA QUERY FOR TABLETS AND LARGER */
+@media screen and (min-width: 768px) {
+    /* #private {
+      height: 100vh;
+    }
+  
+    .menu-private {
+      height: 100vh;
+      width: 196px;
+    } */
+  }
