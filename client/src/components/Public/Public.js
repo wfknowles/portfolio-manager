@@ -10,7 +10,8 @@ import Contact from './pages/Contact';
 import NoMatch from './pages/NoMatch';
 
 import { 
-  UPDATE_VIEW_PRIVATE_MENU
+  UPDATE_VIEW_PRIVATE_MENU,
+  TOGGLE_MENU
 } from '../../utils/GlobalState/actions';
 
 import './Public.css';
@@ -22,6 +23,15 @@ function Public () {
     viewPrivateMenu,
     viewPrivateContent
   } = state;
+
+  const openPrivateMenu = () => {
+    console.log('openPrivateMenu');
+    dispatch({
+      type: TOGGLE_MENU,
+      viewPrivateMenu: true,
+      viewPublicContent: true
+    });
+  }
   
   const getPublicClassName = () => {
     let klass = "";
@@ -45,18 +55,14 @@ function Public () {
 
   const publicClassName = getPublicClassName();
 
-  const viewPrivateMenuHandler = (view) => {
-    console.log('viewPrivateMenuHandler', view);
-    dispatch({
-      type: UPDATE_VIEW_PRIVATE_MENU,
-      viewPrivateMenu: view
-    })
-  }
-
   return (
     !viewPrivateContent && (
       <div id="public" className={publicClassName}>
-        <button id="viewPrivateMenu" onClick={() => viewPrivateMenuHandler(!viewPrivateMenu)}>></button>
+        {
+          !viewPrivateMenu && (
+            <button id="viewPrivateMenu" onClick={() => openPrivateMenu()}>Menu</button>
+          )
+        }
         <header>
           <Header />
         </header>

@@ -9,7 +9,7 @@ function ProjectCard({project}) {
   
   return (
     
-    <div className="project-wrapper card-wrapper" key={project._id}>
+    <div className="project-card-wrapper" key={project._id}>
       <div className={addClass('project card', project.status)} style={{background: `url(${project.imageUrl})` }}>
         <div className={addClass('status', project.status)} >
           <div className="row">

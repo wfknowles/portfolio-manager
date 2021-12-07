@@ -5,7 +5,7 @@
 
 /* Cards */
 
-.card-wrapper .card {
+/* .card-wrapper .card {
     border-radius: 0;
     height: 200px;
     overflow: hidden;
@@ -22,7 +22,7 @@
 
 .card-wrapper > .card .status:hover {
     background:linear-gradient(0deg, rgba(7, 6, 44, 0.3), rgba(7, 6, 44, 0.3)) !important;
-}
+} */
 
 /* Brand - should be elsewhere */
 
@@ -50,7 +50,7 @@
 /* MEDIA QUERY FOR TABLETS AND LARGER */
 @media screen and (min-width: 768px) {
 
-    #dashboard {
+    /* #dashboard {
         display: flex;
         flex-direction: row;
         wrap: nowrap;
@@ -67,21 +67,21 @@
         position: fixed;
         left: 0;
         top: 0;
-    }
+    } */
 
-    #dashMenu .menu-wrapper {
+    /* #dashMenu .menu-wrapper {
         flex-direction: column !important;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
-    #dashContentHeader, .dash-actions {
+    /* #dashContentHeader, .dash-actions {
         padding-bottom: 20px;
     }
 
     #dashContentHeader h1 {
         margin-bottom: 0;
-    }
+    } */
 
     #dashContent {
         height: 100vh;
@@ -100,9 +100,9 @@
         padding: 24px;
     }
 
-    .card-wrapper {
+    /* .card-wrapper {
         width: 33%;
-    }
+    } */
 
 }
 
@@ -111,8 +111,8 @@
 
 }
 
-@media screen and (min-width: 1280px) {
+/* @media screen and (min-width: 1280px) {
     .card-wrapper {
         width: 25%;
     }
-}
+} */

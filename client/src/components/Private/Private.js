@@ -57,7 +57,7 @@ function Private () {
         }
         {
           viewPrivateContent && (
-            <div id="privateContent">
+            <div id="privateContentWrapper">
               <PrivateContent />
             </div>
           )

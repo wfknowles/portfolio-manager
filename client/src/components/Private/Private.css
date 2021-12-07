@@ -1,31 +1,13 @@
 #private {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     wrap: nowrap;
-    overflow: hidden;
-    background: blue;
-}
-
-#private.open {
-    width: 100%;
-}
-
-#private.sidebar {
-    width: 196px;
-}
-
-#private.closed {
-    width: 0%;
 }
 
 #privateMenu {
     display: flex;
     flex-direction: column;
     wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 196px;
     background: rgb(17,17,25);
     background: -moz-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
     background: -webkit-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
@@ -34,20 +16,103 @@
 }
 
 #privateMenu .menu-wrapper {
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+#privateContentWrapper {
+    display: flex;
+    flex-direction: column;
+    wrap: nowrap;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+#privateContentWrapper > div {
+    margin: 0;
+    padding: 0;
+}
+
+.card-wrapper .card {
+    border-radius: 0;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.card-wrapper > .card > .status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.card-wrapper > .card .status:hover {
+    background:linear-gradient(0deg, rgba(7, 6, 44, 0.3), rgba(7, 6, 44, 0.3)) !important;
+}
+
+/* Utilities */
+.drop-shadow {
+    box-shadow: 0px 0px 8px 0px rgba(2, 2, 2, 0.50);
+}
+
+.gradient {
+    background: rgb(17,17,25);
+    background: -moz-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    background: -webkit-linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    background: linear-gradient(35deg, rgba(17,17,25,1) 0%, rgba(27,27,41,1) 48%, rgba(61,74,98,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#111119",endColorstr="#3d4a62",GradientType=1);
+}
 
 /* MEDIA QUERY FOR TABLETS AND LARGER */
 @media screen and (min-width: 768px) {
-    /* #private {
-      height: 100vh;
+
+    #private.open {
+        width: 100%;
     }
-  
-    .menu-private {
-      height: 100vh;
-      width: 196px;
-    } */
-  }
+    
+    #private.sidebar {
+        width: 196px;
+    }
+    
+    #private.closed {
+        width: 0%;
+    }
+
+    #privateMenu {
+        /* justify-content: center;
+        align-items: center; */
+        height: 100vh;
+        width: 196px;
+        min-width: 196px;
+    }
+
+    #privateMenu .menu-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #privateHeader, .dash-actions {
+        padding-bottom: 20px;
+    }
+
+    #privateHeader h1 {
+        margin-bottom: 0;
+    }
+
+    .card-wrapper {
+        width: 33%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .card-wrapper {
+        width: 25%;
+    }
+}

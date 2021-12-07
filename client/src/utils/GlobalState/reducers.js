@@ -3,6 +3,8 @@ import {
   ADD_PROJECT,
   SET_OPTIONS,
   UPDATE_CURRENT,
+  TOGGLE_MENU,
+  TOGGLE_PRIVATE,
   UPDATE_VIEW_PRIVATE_MENU,
   UPDATE_VIEW_PRIVATE_CONTENT,
   UPDATE_CURRENT_PRIVATE
@@ -27,9 +29,20 @@ export const reducer = (state, action) => {
           currentDash: action.currentDash
         };
 
+      case TOGGLE_MENU:
+        return {
+          ...state,
+          viewPrivateMenu: action.viewPrivateMenu,
+          viewPrivateContent: action.viewPrivateContent
+        };
+      case TOGGLE_PRIVATE:
+        return {
+          ...state,
+          viewPrivateContent: action.viewPrivateContent,
+          viewPublicContent: action.viewPublicContent
+        };
 
       case UPDATE_VIEW_PRIVATE_MENU:
-        console.log('UPDATE_VIEW_PRIVATE_MENU', action.viewPrivateMenu);
         return {
           ...state,
           viewPrivateMenu: action.viewPrivateMenu

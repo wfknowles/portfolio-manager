@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
@@ -13,32 +13,37 @@ function PrivateContent () {
   const [state, dispatch] = useAppContext();
   const { viewPrivateContent, currentPrivate } = state;
 
+  useEffect(() => {
+    console.log({currentPrivate})
+  }, [currentPrivate])
 
   return (
 
-    Auth.loggedIn() && (
-      <div id="dashContent">
+
+      <>
         <div>
-        <PrivateHeader />
-        {
-          state.currentPrivate === "portfolio" && (
-            <PrivatePortfolio />
-          )
-        }
-        {
-          state.currentPrivate === "account" && (
-            <PrivateAccount />
-          )
-        }
-        {
-          state.currentPrivate === "options" && (
-            <PrivateOptions />
-          )
-        }
+          <PrivateHeader />
         </div>
-      </div>
-    )
-    
+        <div>
+          {
+            state.currentPrivate === "portfolio" && (
+              <PrivatePortfolio />
+            )
+          }
+          {
+            state.currentPrivate === "account" && (
+              <PrivateAccount />
+            )
+          }
+          {
+            state.currentPrivate === "options" && (
+              <PrivateOptions />
+            )
+          }
+        </div>
+      </>
+
+
   )
 }
 

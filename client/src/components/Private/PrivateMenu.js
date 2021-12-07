@@ -6,26 +6,20 @@ import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import NavBar from '../NavBar/NavBar';
 import { 
   UPDATE_VIEW_PRIVATE_MENU, 
-  UPDATE_CURRENT_PRIVATE 
+  UPDATE_CURRENT_PRIVATE,
+  TOGGLE_MENU,
+  TOGGLE_PRIVATE 
 } from '../../utils/GlobalState/actions';
 
 function PrivateMenu () {
   const [state, dispatch] = useAppContext();
-  const { viewPrivateMenu, currentPrivate } = state;
+  const { viewPrivateMenu, viewPrivateContent, currentPrivate } = state;
 
   const navItems = [
     {name: 'portfolio'},
     {name: 'account'},
     {name: 'options'}
   ];
-
-  const showPrivateMenu = (view) => {
-    console.log({viewPrivateMenu, view})
-    dispatch({
-      type: UPDATE_VIEW_PRIVATE_MENU,
-      viewPrivateMenu: view
-    });
-  }
 
   const navClickHandler = (selection) => {
     dispatch({
@@ -35,9 +29,38 @@ function PrivateMenu () {
     });
   }
 
+  const closePrivateContent = () => {
+    console.log('closePrivateContent');
+    dispatch({
+      type: TOGGLE_PRIVATE,
+      viewPrivateContent: false,
+      viewPublicContent: true
+    });
+  }
+
+  const closePrivateMenu = () => {
+    console.log('closePrivateMenu');
+    dispatch({
+      type: TOGGLE_MENU,
+      viewPrivateMenu: false,
+      viewPublicContent: true
+    });
+  }
+
   return (
     <>
-      <button>Exit</button>
+      <div id="menuActions">
+          {
+            viewPrivateContent && (
+              <button onClick={() => closePrivateContent()}>Back</button>
+            )
+          }
+          {
+            (viewPrivateMenu && !viewPrivateContent) && (
+              <button onClick={() => closePrivateMenu()}>Close Menu</button>
+            )
+          }
+      </div>
       {
         viewPrivateMenu && (
           <NavBar
