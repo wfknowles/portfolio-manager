@@ -18,6 +18,24 @@
     wrap: nowrap;
 }
 
+form .error {
+    text-align: center;
+    font-weight: 300;
+}
+
+form.light label, form.light .error {
+    color: white;
+}
+
+form.mini input {
+    margin-bottom: 12px;
+}
+
+form.mini .form-control, form.mini .error {
+    line-height: 1.2;
+    font-size: 0.9rem;
+}
+
 
 
 /* MEDIA QUERY FOR TABLETS AND LARGER */

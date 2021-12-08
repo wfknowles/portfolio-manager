@@ -1,11 +1,11 @@
 import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import FormAddOptions from '../../Form/FormAddOptions.js';
 
 function PrivateOptions() {
   
   return (
-    <Row sm="12" md="10" id="privateOptions">
+    <Row sm="12" md="10" id="privateOptions" className="private private-content">
       <Col sm="12">
           <FormAddOptions />
       </Col>

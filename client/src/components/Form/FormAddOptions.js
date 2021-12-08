@@ -5,8 +5,10 @@ import FormInput from './FormInput.js';
 import ReactForms from '../../utils/ReactForms/ReactForms';
 import FormCheckboxArray from './FormCheckboxArray';
 
+import { useMutation } from '@apollo/client';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { SET_OPTIONS } from '../../utils/GlobalState/actions';
+import { ADD_OPTIONS } from '../../utils/GraphQL/mutations';
 import { techOptions } from '../../utils/staticData.js';
 
 import './Form.css';
@@ -29,10 +31,6 @@ function FormAddOptions() {
       });
     }
   }
-
-  // useEffect(() => {
-  //   console.log({state}, techArray);
-  // },[state, techArray]);
 
 
   const handleSubmit = (e) => {
@@ -65,7 +63,7 @@ function FormAddOptions() {
           <FormInput 
             klass=""
             type="media"
-            name="options.brand"
+            name="options.brandImageUrl"
             label="Brand"
             placeholder="http://example.com..."
             change={handleChange}
@@ -73,7 +71,7 @@ function FormAddOptions() {
           <FormInput 
             klass=""
             type="media"
-            name="options.featureImage"
+            name="options.featureImageUrl"
             label="Feature Image"
             placeholder="http://example.com..."
             change={handleChange}

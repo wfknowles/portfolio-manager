@@ -66,7 +66,7 @@ export function titleize(string) {
       title = _capitalize(title);
     }
 
-    return title;
+    return title.replace('~', '');
   }
 
   // Titleize...

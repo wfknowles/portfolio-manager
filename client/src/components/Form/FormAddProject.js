@@ -5,14 +5,19 @@ import FormInput from './FormInput.js';
 import FormCheckboxArray from './FormCheckboxArray';
 import ReactForms from '../../utils/ReactForms/ReactForms';
 
+import { useMutation } from '@apollo/client';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
-import { ADD_PROJECT } from '../../utils/GlobalState/actions';
+import { SET_PROJECT } from '../../utils/GlobalState/actions';
+import { ADD_PROJECT } from '../../utils/GraphQL/mutations';
 import { techOptions, projectStatusOptions } from '../../utils/staticData.js';
 
 function FormAddProject({toggle}) {
-  const [state, dispatch] = useAppContext();
+
+  const [ state, dispatch ] = useAppContext();
   const { project } = state;
-  const error = false;
+
+  const [ addProject, { error } ] = useMutation(ADD_PROJECT);
+  
 
   // should this all be changed to onBlur?
   const handleChange = (e) => {
@@ -23,18 +28,22 @@ function FormAddProject({toggle}) {
 
     if (reducedProject) {
       dispatch({
-        type: ADD_PROJECT,
+        type: SET_PROJECT,
         reducedProject
       });
     }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({
-      type: ADD_PROJECT,
-      project: {...state}
+
+    const mutationResponse = await addProject({
+      variables: { 
+        project
+      }
     });
+
+    console.log({mutationResponse});
   }
   
   return (
@@ -73,7 +82,7 @@ function FormAddProject({toggle}) {
         placeholder="Lorem ipsum dolar sit amet"
         change={handleChange}
       />
-      <FormCheckboxArray data={techOptions} name="options.skills" klass="" change={handleChange}/>
+      <FormCheckboxArray data={techOptions} name="project.tech" klass="" change={handleChange}/>
       <FormInput 
         klass=""
         type="text"
@@ -92,12 +101,12 @@ function FormAddProject({toggle}) {
       />
       
       
-      {/* {
-        error &&
-          <Form.Group className="error">
-              <p className="">There's been some errors...</p>
-          </Form.Group>
-      } */}
+      {
+        // error &&
+        //   <Form.Group className="error">
+        //       <p className="">There's been some errors...</p>
+        //   </Form.Group>
+      }
       
       <Button color="primary" type="submit">Add Project</Button>
       <Button className="ms-3" variant="secondary" type="submit" onClick={(e) => {toggle(false)}}>Cancel</Button>

@@ -9,7 +9,7 @@ function PrivatePortfolio() {
   const [form, toggleForm] = useState(false);
   
   return (
-    <Row sm="12" md="10" id="privatePortfolio" className="">
+    <Row sm="12" md="10">
       <Col sm="12">
 
         {

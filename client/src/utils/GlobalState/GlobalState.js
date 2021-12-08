@@ -8,6 +8,7 @@ const { Provider } = AppContext;
 const AppProvider = ({ value = [], ...props }) => {
 
   const [state, dispatch] = useAppReducer({
+    loggedIn: false,
     viewPrivateMenu: false,
     viewPrivateContent: false,
     viewPublicContent: true,

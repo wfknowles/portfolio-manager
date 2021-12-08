@@ -1,19 +1,19 @@
 import { useReducer } from 'react';
 import {
-  ADD_PROJECT,
+  SET_PROJECT,
   SET_OPTIONS,
-  UPDATE_CURRENT,
   TOGGLE_MENU,
-  TOGGLE_PRIVATE,
-  UPDATE_VIEW_PRIVATE_MENU,
-  UPDATE_VIEW_PRIVATE_CONTENT,
-  UPDATE_CURRENT_PRIVATE
+  TOGGLE_CONTENT,
+  OPEN_MENU,
+  OPEN_CURRENT_PRIVATE,
+  LOG_IN,
+  LOG_OUT
 } from './actions';
 
 export const reducer = (state, action) => {
     switch (action.type) {
 
-      case ADD_PROJECT:
+      case SET_PROJECT:
         return {
           ...state,
           ...action.reducedProject // reduced by ReactForms
@@ -23,40 +23,42 @@ export const reducer = (state, action) => {
           ...state,
           ...action.reducedOptions // reduced by ReactForms
         };
-      case UPDATE_CURRENT:
-        return {
-          ...state,
-          currentDash: action.currentDash
-        };
-
       case TOGGLE_MENU:
         return {
           ...state,
           viewPrivateMenu: action.viewPrivateMenu,
           viewPrivateContent: action.viewPrivateContent
         };
-      case TOGGLE_PRIVATE:
+      case TOGGLE_CONTENT:
         return {
           ...state,
           viewPrivateContent: action.viewPrivateContent,
           viewPublicContent: action.viewPublicContent
         };
-
-      case UPDATE_VIEW_PRIVATE_MENU:
+      case OPEN_MENU:
         return {
           ...state,
-          viewPrivateMenu: action.viewPrivateMenu
+          viewPrivateMenu: true
         };
-      case UPDATE_VIEW_PRIVATE_CONTENT:
-        return {
-          ...state,
-          viewPrivateContent: action.viewPrivateContent
-        };
-      case UPDATE_CURRENT_PRIVATE:
+      case OPEN_CURRENT_PRIVATE:
         return {
           ...state,
           currentPrivate: action.currentPrivate,
-          viewPrivateContent: action.viewPrivateContent
+          viewPrivateContent: true,
+          viewPublicContent: false
+        };
+      case LOG_IN:
+        return {
+          ...state,
+          loggedIn: true
+        };
+      case LOG_OUT:
+        return {
+          ...state,
+          currentPrivate: '',
+          viewPrivateMenu: false,
+          viewPrivateContent: false,
+          viewPublicContent:true
         };
 
       default:

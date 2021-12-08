@@ -1,48 +1,52 @@
-import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import Auth from '../../utils/auth';
+import React from 'react';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
 
 import PrivateHeader from './partials/Header';
-
 import PrivatePortfolio from './pages/Portfolio';
 import PrivateAccount from './pages/Account';
 import PrivateOptions from './pages/Options';
 
-function PrivateContent () {
-  const [state, dispatch] = useAppContext();
-  const { viewPrivateContent, currentPrivate } = state;
+import LocalStorage from '../../utils/LocalStorage';
 
-  useEffect(() => {
-    console.log({currentPrivate})
-  }, [currentPrivate])
+function PrivateContent () {
+  const [ state ] = useAppContext();
+  const { currentPrivate } = state;
+  const browserCurrentPrivate = LocalStorage.getState('currentPrivate');
+
+  const isCurrent = (value) => {
+    // if currentPrivate or browserCurrentPrivate are equal to value
+    if (currentPrivate === value || browserCurrentPrivate === value) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
 
   return (
 
-
-      <>
-        <div>
-          <PrivateHeader />
-        </div>
-        <div>
-          {
-            state.currentPrivate === "portfolio" && (
-              <PrivatePortfolio />
-            )
-          }
-          {
-            state.currentPrivate === "account" && (
-              <PrivateAccount />
-            )
-          }
-          {
-            state.currentPrivate === "options" && (
-              <PrivateOptions />
-            )
-          }
-        </div>
-      </>
-
+    <>
+      <div>
+        <PrivateHeader />
+      </div>
+      <div>
+        {
+          isCurrent('portfolio') && (
+            <PrivatePortfolio />
+          )
+        }
+        {
+          isCurrent('account') && (
+            <PrivateAccount />
+          )
+        }
+        {
+          isCurrent('options') && (
+            <PrivateOptions />
+          )
+        }
+      </div>
+    </>
 
   )
 }

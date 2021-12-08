@@ -1,6 +1,6 @@
+const { AuthenticationError } = require('apollo-server-express');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-
 const secret = process.env.TOKEN_SECRET;
 const expiration = process.env.TOKEN_EXP;
 
@@ -33,7 +33,16 @@ const signToken = ({ _id, firstName, lastName, email }) => {
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 }
 
+const isLoggedIn = (context) => {
+  if (context.user) {
+    return true;
+  } else {
+    throw new AuthenticationError('You must be logged in to perform this action...');
+  }
+}
+
 module.exports = {
   authMiddleware,
-  signToken
+  signToken,
+  isLoggedIn
 };

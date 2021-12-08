@@ -1,28 +1,20 @@
-#public {
+.public {
   display: flex;
   flex-direction: column;
-  wrap: nowrap;
+  flex-wrap: nowrap;
   overflow: hidden;
 }
 
-#public.open {
+.public.open {
   width: 100%;
 }
 
-#public.sidebar {
+.public.menu-open {
   width: calc(100% - 196px);
 }
 
-#public.closed {
+.public.closed {
   width: 0%;
-}
-
-#viewPrivateMenu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 80px;
-  height: 35px;
 }
 
 main {

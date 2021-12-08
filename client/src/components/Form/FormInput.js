@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { addClass } from '../../utils/helpers';
-import ReactForms from '../../utils/ReactForms/ReactForms';
+import { titleize, addClass } from '../../utils/helpers';
+// import ReactForms from '../../utils/ReactForms/ReactForms';
 
 
 function FormInput ({klass, type, name, label, placeholder, change, options}) {
@@ -37,7 +37,7 @@ function FormInput ({klass, type, name, label, placeholder, change, options}) {
             <option value="">{placeholder}</option>
             {
               options.map(( option ) => (
-                <option key={option} value={ option } >{ReactForms.titleize( option )}</option>
+                <option key={option} value={ option } >{titleize( option )}</option>
               ))
             }
           </Form.Select>

@@ -1,40 +1,36 @@
-import React, { useEffect } from 'react';
-import NavBar from '../NavBar/NavBar';
-import { useAppContext } from '../../utils/GlobalState/GlobalState';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
 
 import PrivateMenu from './PrivateMenu';
 import PrivateContent from './PrivateContent';
-import { 
-  UPDATE_VIEW_PRIVATE_MENU,
-  UPDATE_VIEW_PRIVATE_CONTENT,
-} from '../../utils/GlobalState/actions';
+
+import { useAppContext } from '../../utils/GlobalState/GlobalState';
+import LocalStorage from '../../utils/LocalStorage';
+import { addClass } from '../../utils/helpers';
 
 import './Private.css';
 
-
-
 function Private () {
 
-  const [state, dispatch ] = useAppContext();
-  const {
-    viewPrivateMenu,
-    viewPrivateContent
-  } = state;
+  const [ state ] = useAppContext();
+  const { viewPrivateMenu, viewPrivateContent, loggedIn } = state;
+
+  // get multiple properties from localStorage's state
+  const [ browserViewPrivateMenu, browserViewPrivateContent, browserLoggedIn ] = LocalStorage.getState(['viewPrivateMenu', 'viewPrivateContent', 'loggedIn']);
   
   const getPrivateClassName = () => {
     let klass = "";
 
-    if (viewPrivateMenu && viewPrivateContent) {
-
+    if ( ( viewPrivateMenu && viewPrivateContent ) || ( browserViewPrivateMenu && browserViewPrivateContent ) ) {
+      // if private menu and private content are open
       klass = "open";
 
-    } else if ( viewPrivateMenu ) {
-
-      klass = 'sidebar';
+    } else if ( viewPrivateMenu || browserViewPrivateMenu) {
+      // if private menu is open
+      klass = 'menu-open';
 
     } else {
 
+      // private is closed
       klass = 'closed';
 
     }
@@ -45,25 +41,28 @@ function Private () {
   const privateClassName = getPrivateClassName();
 
   return (
-
-    (viewPrivateContent || viewPrivateMenu) && (
-      <div id="private" className={privateClassName} >
-        {
-          viewPrivateMenu && (
-            <div id="privateMenu">
-              <PrivateMenu />
-            </div>
-          )
-        }
-        {
-          viewPrivateContent && (
-            <div id="privateContentWrapper">
-              <PrivateContent />
-            </div>
-          )
-        }
-    </div>
-    )
+    <>
+      {
+        ( ( loggedIn || browserLoggedIn ) || ( viewPrivateMenu || browserViewPrivateMenu ) ) && (
+          <div className={addClass('private', privateClassName)} >
+            {
+              ( viewPrivateMenu || browserViewPrivateMenu ) && (
+                <div className="private-menu">
+                  <PrivateMenu />
+                </div>
+              )
+            }
+            {
+              ( ( loggedIn || browserLoggedIn ) && ( viewPrivateContent || browserViewPrivateContent ) ) && (
+                <div className="private-content">
+                  <PrivateContent />
+                </div>
+              )
+            }
+          </div>
+        )
+      }
+    </>
     
   )
 }

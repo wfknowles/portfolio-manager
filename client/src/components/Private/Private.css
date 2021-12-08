@@ -1,10 +1,10 @@
-#private {
+.private {
     display: flex;
     flex-direction: row;
     wrap: nowrap;
 }
 
-#privateMenu {
+.private-menu {
     display: flex;
     flex-direction: column;
     wrap: nowrap;
@@ -15,14 +15,14 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#111119",endColorstr="#3d4a62",GradientType=1);
 }
 
-#privateMenu .menu-wrapper {
+.private-menu .menu-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-#privateContentWrapper {
+.private-content {
     display: flex;
     flex-direction: column;
     wrap: nowrap;
@@ -31,9 +31,17 @@
     padding: 24px;
 }
 
-#privateContentWrapper > div {
+.private-content > div {
     margin: 0;
     padding: 0;
+}
+
+.private-header, .dash-actions {
+    padding-bottom: 20px;
+}
+
+.private-header h1 {
+    margin-bottom: 0;
 }
 
 .card-wrapper .card {
@@ -71,39 +79,34 @@
 /* MEDIA QUERY FOR TABLETS AND LARGER */
 @media screen and (min-width: 768px) {
 
-    #private.open {
+    .private.open {
         width: 100%;
     }
     
-    #private.sidebar {
+    .private.menu-open {
         width: 196px;
     }
     
-    #private.closed {
+    .private.closed {
         width: 0%;
     }
 
-    #privateMenu {
-        /* justify-content: center;
-        align-items: center; */
+    .private-menu {
         height: 100vh;
         width: 196px;
         min-width: 196px;
+        padding: 12px;
     }
 
-    #privateMenu .menu-wrapper {
+    .private-menu .menu-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    #privateHeader, .dash-actions {
-        padding-bottom: 20px;
-    }
-
-    #privateHeader h1 {
-        margin-bottom: 0;
+    #menuActions {
+        margin-bottom: 12px;
     }
 
     .card-wrapper {

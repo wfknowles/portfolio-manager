@@ -1,18 +1,21 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { User, Project, Options } = require('../models');
+const { signToken, isLoggedIn } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
-      if (context.user) {
+      if (isLoggedIn(context)) {
         const user = await User.findById(context.user._id);
         return user;
       }
-
-      throw new AuthenticationError('Not logged in');
+    },
+    users: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const users = await User.find({});
+        return users;
+      }
     }
-    // add additional graphQL queries here
   },
   Mutation: {
     login: async (parent, args, context) => {
@@ -34,8 +37,31 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
+    },
+    addProject: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...project } = args.project;
+        return await Project.create(project);
+      }
+    },
+    updateProject: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...project } = args.project;
+        return await Project.findByIdAndUpdate(_id, project, { new: true });
+      }
+    },
+    addOptions: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...options } = args.options;
+        return await Options.create(options);
+      }
+    },
+    updateOptions: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...options } = args.options;
+        return await Options.findByIdAndUpdate(_id, options, { new: true });
+      }
     }
-    // add additional graphQL mutations here
   }
 };
 

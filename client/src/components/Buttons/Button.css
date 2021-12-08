@@ -1,0 +1,44 @@
+.actionButton {
+  border: none;
+  background: rgba(255,255,255, 0);
+}
+
+.actionButton .dark {
+  color: rgba(0,0,0,0.5);
+}
+
+.actionButton .black {
+  color: rgba(0,0,0,1.0);
+}
+
+.actionButton .light {
+  color: rgba(255,255,255, 0.5);
+}
+
+.actionButton .white {
+  color: rgba(255,255,255, 1.0);
+}
+
+.actionButton i {
+  font-size: 40px;
+}
+
+.actionButton .show-hover {
+  opacity: 0;
+}
+
+.actionButton:hover .show-hover {
+  opacity: 100;
+}
+
+.actionButton .fixed-top-left {
+  position: fixed;
+  top: 12px;
+  left: 5px;
+}
+
+.actionButton .fixed-top-right {
+  position: fixed;
+  top: 12px;
+  right: 5px;
+}

@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 function PrivateAccount() {
   
   return (
-    <Row sm="12" md="10" id="privateAccount">
+    <Row sm="12" md="10" id="privateAccount" className="private private-content">
       <Col sm="12">
         <h1>Account</h1>
       </Col>

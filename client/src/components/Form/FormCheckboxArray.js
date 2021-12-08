@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import FormInput from './FormInput.js';
-import { addInputName, addClass } from '../../utils/helpers';
-import ReactForms from '../../utils/ReactForms/ReactForms';
+import { titleize, addClass, addInputName } from '../../utils/helpers';
+
 
 function FormCheckboxArray({data, name, klass, change}) {
 
@@ -15,7 +15,7 @@ function FormCheckboxArray({data, name, klass, change}) {
                 klass={addClass(klass)}
                 type="checkbox"
                 name={addInputName(name, d)}
-                label={ReactForms.titleize(d)}
+                label={titleize(d)}
                 change={change}
               />
           </Col>
