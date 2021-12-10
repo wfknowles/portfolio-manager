@@ -26,7 +26,7 @@ main {
 }
 
 header {
-  height: 100px;
+  min-height: 100px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -42,58 +42,70 @@ footer {
 }
 
 /* Header */
-.navbar-brand > img {
-  width: 140px;
+header .navbar-nav .nav-link {
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+header .navbar-brand > img {
+  width: 196px;
   height: auto;
 }
 
+
 /* Root Content */
+
+.page-wrapper {
+  font-size: 1.2rem;
+}
+
+.jumbotron, 
+.jumbotron > div,
+.jumbotron > div > div,
+.jumbotron-content,
+.jumbptron-content > div,
+.jumbptron-content .title h1,
+.jumbptron-content .title h1 span {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .jumbotron {
-  height: 300px;
+  margin-bottom: 200px;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
 
-.image {
-  margin-top: -72%;
-  margin-bottom: 4%;
-}
-
-.image-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.portrait {
+.jumbotron-content {
   height: 300px;
-  border: 5px solid rgba(255,255,255,1);
-  border-radius: 50%;
-}
-
-.content {
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-.p-header {
+  padding-top: 100px;
   text-align: center;
 }
 
-.p-header > h1 {
-  line-height: 1.6;
-  font-size: 28px;
+.jumbotron-content .title h1 {
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 16px;
 }
 
-.p-header > h3 {
-  line-height: 1.4;
-  font-size: 20px;
-  margin-bottom: 16px;
+.jumbotron-content .image-wrapper img {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 10px solid rgba(255,255,255,1);
+}
+
+.bio, .tech, .link {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .links a {
@@ -142,165 +154,105 @@ footer {
 }
 
 
-@media screen and (min-width: 400px) {
-
-  .image {
-    margin-top: -54%;
-    
-  }
-
-  .portrait {
-    height: 320px;
-  }
-
-}
-
-@media screen and (min-width: 500px) {
-
-  .image {
-    margin-top: -40%;
-    
-  }
-
-  .portrait {
-    height: 340px;
-  }
-  
-}
-
-
 /* TABLETS AND LARGER */
 @media screen and (min-width: 768px) {
 
-  p {
-    font-size: 1.1rem;
+  header .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
-  .navbar-brand > img {
-    width: 148px;
+  header .navbar-nav {
+    margin-left: auto;
   }
 
-  .navbar-nav > a {
-    font-size: 1.3rem;
-    margin: 0 18px;
-    padding: 28px 36px;
+  header .navbar-nav .nav-link {
+    font-weight: 400;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 1.3rem !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
   }
 
   .jumbotron {
-    height: 280px;
+    margin-bottom: 168px;
   }
 
-  .image {
-    margin-top: -32%;
-  }
-
-  .image-wrapper {
-    padding-right: 36px;
-    justify-content: end;
-  }
-
-  .portrait {
-    height: 328px;
-  }
-
-  .content {
-    margin-top: -14%;
-  }
-
-  .content .p-header {
+  .jumbotron-content {
     text-align: left;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  .p-header > h1 {
-    line-height: 1.4;
-  }
-  
-  .p-header > h3 {
-    line-height: 1.3;
+  .jumbotron-content .image-wrapper {
+    width: 60%;
+    flex-direction: row;
+    justify-content: end;
+    padding-right: 36px;
   }
 
+  .jumbotron-content .title {
+    width: 40%;
+    flex-direction: column;
+  }
+
+  .jumbotron-content .title h1 {
+    font-size: 2.2rem;
+    justify-content: end;
+    padding-bottom: 36px;
+    padding-left: 24px;
+  }
+
+  .jumbotron-content .title h1 span {
+    margin-top: 8px;
+  }
+
+  .order-last {
+    order: 0 !important;
+  }
+
+  .jumbotron-content .image-wrapper img {
+    height: 360px;
+    width: 360px;
+  }
+
+  .bio, .tech, .link {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
-@media screen and (min-width: 1024px) {
+/* Horizontal Tablet */
+@media screen and (min-width: 992px) {
 
-  .portait {
-    height: 300px;
+  .jumbotron-content {
+    width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .image {
-    margin-top: -24%;
+  .page-wrapper {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  .image-wrapper {
-    padding-right: 40px;
-  }
-
-  .content {
-    margin-top: -12%;
-  }
-
-  .card-content h2 {
-    font-size: 1.6rem;
-  }
-
-  .p-header > h1 {
-    line-height: 1.6;
-  }
-
-  .links {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
-
 }
 
+
+/* Large Screens */
 @media screen and (min-width: 1200px) {
 
-  p {
-    font-size: 1.2rem;
-  }
-
-  .navbar-brand > img {
-    width: 160px;
-  }
-
-  .jumbotron {
-    height: 360px;
-  }
-
-  .image-wrapper {
-    padding-right: 100px;
-  }
-
-  .portrait {
-    height: 360px;
-  }
-
-  .content {
-    margin-top: -10%;
-  }
-
-  .p-header > h1 {
-    font-size: 2.5rem;
-    line-height: 1.4;
-  }
-
-  .card-content {
-    min-height: 240px;
+  .page-wrapper {
+    max-width: 1140px;
   }
 
 }
 
+/* Extra Large Screens */
 @media screen and (min-width: 1400px) {
-
-  /* .content {
-    margin-top: -10%;
-  } */
-
-  .portrait {
-    height: 420px;
+  .page-wrapper {
+    max-width: 1320px;
   }
-
-
 }
   

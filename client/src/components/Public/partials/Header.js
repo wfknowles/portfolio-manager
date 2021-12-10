@@ -16,7 +16,7 @@ function Header () {
         name="publicNav"
         navItems={navItems}
         navBarClassName="menu menu-public"
-        navClassName="ms-auto"
+        navClassName=""
         variant="light" 
         expand="md"
       />
