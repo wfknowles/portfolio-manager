@@ -3,7 +3,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import FormInput from './FormInput.js';
 import FormCheckboxArray from './FormCheckboxArray';
-import ReactForms from '../../utils/ReactForms/ReactForms';
+import ReactForms from '../../utils/ReactForms';
 
 import { useMutation } from '@apollo/client';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';

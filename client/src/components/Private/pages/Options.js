@@ -5,7 +5,7 @@ import FormAddOptions from '../../Form/FormAddOptions.js';
 function PrivateOptions() {
   
   return (
-    <Row sm="12" md="10" id="privateOptions" className="private private-content">
+    <Row sm="12" md="10">
       <Col sm="12">
           <FormAddOptions />
       </Col>

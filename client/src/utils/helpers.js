@@ -84,5 +84,12 @@ export function addInputName(name, string) {
   }
 }
 
+export function replaceNull(value) {
+  if (value === null) {
+    return "";
+  } else {
+    return value;
+  }
+}
 
 

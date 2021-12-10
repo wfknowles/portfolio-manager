@@ -21,7 +21,7 @@ export const reducer = (state, action) => {
       case SET_OPTIONS:
         return {
           ...state,
-          ...action.reducedOptions // reduced by ReactForms
+          options: action.options
         };
       case TOGGLE_MENU:
         return {
@@ -50,12 +50,14 @@ export const reducer = (state, action) => {
       case LOG_IN:
         return {
           ...state,
-          loggedIn: true
+          loggedIn: true,
+          currentUser: action.currentUser
         };
       case LOG_OUT:
         return {
           ...state,
-          currentPrivate: '',
+          currentUser: false,
+          currentPrivate: false,
           viewPrivateMenu: false,
           viewPrivateContent: false,
           viewPublicContent:true

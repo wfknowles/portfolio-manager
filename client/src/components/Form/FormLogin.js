@@ -11,7 +11,6 @@ import Auth from '../../utils/auth';
 
 function FormLogin({className}) {
 
-  // only need the dispatch function
   const [ state, dispatch ] = useAppContext();
   // using component state for user input values
   const [ loginState, setLoginState] = useState({});
@@ -40,12 +39,14 @@ function FormLogin({className}) {
 
       // set state's loggedIn property
       dispatch({
-        type: LOG_IN
+        type: LOG_IN,
+        currentUser: mutationResponse.data.login.user._id
       });
 
       // set localStorage's loggedIn property
       LocalStorage.setState({
-        loggedIn: true
+        loggedIn: true,
+        currentUser: mutationResponse.data.login.user._id
       })
 
     }

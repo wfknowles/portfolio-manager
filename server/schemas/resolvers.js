@@ -15,6 +15,12 @@ const resolvers = {
         const users = await User.find({});
         return users;
       }
+    },
+    options: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        const { options } = Options.findOne({user: context.user._id});
+        return options;
+      }
     }
   },
   Mutation: {
@@ -50,16 +56,11 @@ const resolvers = {
         return await Project.findByIdAndUpdate(_id, project, { new: true });
       }
     },
-    addOptions: async (parent, args, context) => {
-      if (isLoggedIn(context)) {
-        const { _id, ...options } = args.options;
-        return await Options.create(options);
-      }
-    },
     updateOptions: async (parent, args, context) => {
       if (isLoggedIn(context)) {
         const { _id, ...options } = args.options;
-        return await Options.findByIdAndUpdate(_id, options, { new: true });
+        // console.log({ ...options, user: context.user._id });
+        return await Options.findByIdAndUpdate(_id, { ...options, user: context.user._id }, { new: true, upsert: true });
       }
     }
   }

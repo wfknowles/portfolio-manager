@@ -62,22 +62,6 @@ mutation ($project: ProjectInput) {
 }
 `
 
-
-
-export const ADD_OPTIONS = gql`
-mutation ($options: OptionsInput) {
-  addOptions (options: $options){
-    _id
-    user
-    title
-    brandImageUrl
-    featureImageUrl
-    bio
-    skills
-  }
-}
-`
-
 export const UPDATE_OPTIONS = gql`
 mutation ($options: OptionsInput) {
   updateOptions (options: $options){

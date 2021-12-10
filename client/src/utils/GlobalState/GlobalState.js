@@ -13,6 +13,7 @@ const AppProvider = ({ value = [], ...props }) => {
     viewPrivateContent: false,
     viewPublicContent: true,
     currentPrivate: '',
+    currentUser: false,
     project: {},
     options: {},
     projects: []

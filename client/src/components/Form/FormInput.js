@@ -1,10 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { titleize, addClass } from '../../utils/helpers';
-// import ReactForms from '../../utils/ReactForms/ReactForms';
 
-
-function FormInput ({klass, type, name, label, placeholder, change, options}) {
+function FormInput ({klass, type, name, value, label, placeholder, change, options}) {
 
   const inputTypes = [ "", "text", "tel", "email", "password", "search", "number"];
 
@@ -24,7 +22,7 @@ function FormInput ({klass, type, name, label, placeholder, change, options}) {
       inputTypes.includes(type) && (
         <Form.Group className={addClass('form-group', klass)}>
           <Form.Label htmlFor={name}>{label}</Form.Label>
-          <Form.Control type={type} name={name} placeholder={placeholder} onChange={change} />
+          <Form.Control type={type} name={name} value={ value || "" } placeholder={placeholder} onChange={change} />
         </Form.Group >
       )
     }
@@ -37,7 +35,7 @@ function FormInput ({klass, type, name, label, placeholder, change, options}) {
             <option value="">{placeholder}</option>
             {
               options.map(( option ) => (
-                <option key={option} value={ option } >{titleize( option )}</option>
+                <option key={option} value={ option || ""} >{titleize( option )}</option>
               ))
             }
           </Form.Select>
@@ -56,7 +54,7 @@ function FormInput ({klass, type, name, label, placeholder, change, options}) {
       type === 'textarea' && (
         <Form.Group className={addClass('form-group', klass)}>
           <Form.Label htmlFor={name}>{label}</Form.Label>
-          <Form.Control as={type} rows={3} name={name} onChange={change}></Form.Control>
+          <Form.Control as={type} rows={3} name={name} value={ value || "" } onChange={change}></Form.Control>
         </Form.Group >
       )
     }

@@ -54,17 +54,17 @@ const typeDefs = gql`
 
   input OptionsInput {
     _id: ID
-    user: ID!
-    title: String!
-    brandImageUrl: String!
-    featureImageUrl: String!
-    bio: String!
-    skills: JSONObject!
+    title: String
+    brandImageUrl: String
+    featureImageUrl: String
+    bio: String
+    skills: JSONObject
   }
 
   type Query {
     user: User
     users: [User]
+    options: Options
   }
 
   type Mutation {
@@ -72,7 +72,6 @@ const typeDefs = gql`
     register(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addProject(project: ProjectInput): Project
     updateProject(project: ProjectInput): Project
-    addOptions(options: OptionsInput): Options
     updateOptions(options: OptionsInput): Options
   }
 `;

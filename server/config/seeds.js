@@ -1,10 +1,11 @@
 const db = require('./connection');
-const { User, Project } = require('../models');
+const { User, Project, Options } = require('../models');
 
 db.once('open', async () => {
 
-  // user
   await User.deleteMany();
+  await Options.deleteMany();
+  await Project.deleteMany();
 
   const user = await User.create({
     firstName: 'Will',
@@ -15,15 +16,12 @@ db.once('open', async () => {
 
   console.log('user created!', {user});
 
-  await Project.deleteMany();
-
   const project = await Project.create({
-    userID: user._id,
+    user: user._id,
     status: 'draft',
     title: 'Sample Project 1',
     imageUrl: 'http://example.com',
-    description: 'Lorem ipsum dolar sit amet'
-,
+    description: 'Lorem ipsum dolar sit amet',
     link: 'http://example.com',
     github: 'http://example.com',
     tech: {
@@ -32,11 +30,11 @@ db.once('open', async () => {
     }
   });
 
-  project.tech.forEach((v,k) => {
-    console.log({k,v});
-  });
+  // project.tech.forEach((v,k) => {
+  //   console.log({k,v});
+  // });
 
-  console.log('project created!', {project});
+  console.log('project created!');
 
   process.exit();
 });

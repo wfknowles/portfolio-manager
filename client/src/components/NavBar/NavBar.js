@@ -12,7 +12,6 @@ function NavBar ({name, brand, navItems, activeItem, click, navBarClassName, nav
           <Navbar.Brand href="/">
             <img
                 src={brand}
-                width="200"
                 alt="Logo"
             />
           </Navbar.Brand>

@@ -10,3 +10,17 @@ export const QUERY_USER = gql`
     }
   }
 `
+
+export const QUERY_OPTIONS = gql`
+  query {
+    options {
+      _id
+      user
+      title
+      brandImageUrl
+      featureImageUrl
+      bio
+      skills
+    }
+  }
+`

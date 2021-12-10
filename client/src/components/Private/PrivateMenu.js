@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import ActionButton from '../Buttons/ActionButton';
 import NavBar from '../NavBar/NavBar';
@@ -25,6 +25,10 @@ function PrivateMenu () {
     {name: 'options'},
     {name: 'Log-Out'}
   ];
+
+  useEffect(() => {
+    console.log({state});
+  }, [state])
 
   // get multiple properties from localStorage's state
   const [browserViewPrivateMenu, browserViewPrivateContent, browserLoggedIn] = LocalStorage.getState(['viewPrivateMenu', 'viewPrivateContent', 'loggedIn']);
