@@ -25,13 +25,7 @@ function Root () {
                   My name is Will.
                 </h1>
                 <p>
-                  I’m a web developer pursuing a full-time position in Kansas City or remotely. I have 10+ years of html/css/js front-end experience and 4 years experience developing a full stack. Committed to learning, Im a recent graduate from University of Kansas’ Full Stack Coding Bootcamp where I gained valuable experience learning and working with a MERN stack in a collaborative environment.
-                </p>
-                <p>
-                  My experience working as a creative, marketing, and technology professional has given me a wide array of rich experiences and numerous opportunities to hone my problem-solving abilities. Having the ability to understand clients, creatives, and technical professionals, I’ve had the opportunity to successfully lead teams tasked with achieving complex operations, projects, and goals.
-                </p>
-                <p>
-                  I’m a web developer pursuing a full-time position in Kansas City or remotely. I have 10+ years of html/css/js front-end experience and 4 years experience developing a full stack. Committed to learning, Im a recent graduate from University of Kansas’ Full Stack Coding Bootcamp where I gained valuable experience learning and working with a MERN stack in a collaborative environment.
+                  I’m a web developer pursuing a full-time position in Kansas City or remotely. I have 10+ years of off and on freelance html/css/js development and 3+ years experience developing a full stack. Committed to learning, Im a recent graduate from University of Kansas’ Full Stack Coding Bootcamp where I gained valuable experience learning and working with a MERN stack in a collaborative environment. 
                 </p>
                 <p>
                   My experience working as a creative, marketing, and technology professional has given me a wide array of rich experiences and numerous opportunities to hone my problem-solving abilities. Having the ability to understand clients, creatives, and technical professionals, I’ve had the opportunity to successfully lead teams tasked with achieving complex operations, projects, and goals.
