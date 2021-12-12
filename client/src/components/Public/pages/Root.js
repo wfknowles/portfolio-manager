@@ -18,7 +18,7 @@ function Root () {
                         <span>My name is Will.</span>
                     </h1>
                   </div>
-                  <div class="image-wrapper">
+                  <div className="image-wrapper">
                     <img src="/assets/images/will-knowles-portrait.jpg" alt="Portrait of Will Knowles"/>
                   </div>
                 </div>

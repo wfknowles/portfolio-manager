@@ -35,9 +35,9 @@ function FormAddOptions() {
     }
   }, [ queryData ])
 
-  useEffect(() => {
-    console.log({formData})
-  }, [ formData ]);
+  // useEffect(() => {
+  //   console.log({formData})
+  // }, [ formData ]);
 
   // should this all be changed to onBlur?
   const handleChange = (e) => {

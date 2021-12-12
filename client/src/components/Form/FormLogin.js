@@ -11,9 +11,10 @@ import Auth from '../../utils/auth';
 
 function FormLogin({className}) {
 
+  const [ loginState, setLoginState] = useState({});
   const [ state, dispatch ] = useAppContext();
   // using component state for user input values
-  const [ loginState, setLoginState] = useState({});
+  
   // deconstruct loginState
   const { email, password } = loginState;
   // login mutation and error response
@@ -22,6 +23,7 @@ function FormLogin({className}) {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+    console.log({ email, password })
 
     // attempt server authentication
     const mutationResponse = await login({

@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import { useAppContext } from '../../../utils/GlobalState/GlobalState';
-import { titleCase } from '../../../utils/helpers';
+import { titleize } from '../../../utils/helpers';
 import LocalStorage from '../../../utils/LocalStorage';
 
 function PrivateHeader() {
@@ -13,9 +13,9 @@ function PrivateHeader() {
   // if currentPrivate isnt defined, fall back to browser's currentPrivate
   const getPrivateTitle = () => {
     if (currentPrivate !== '') {
-      return titleCase(currentPrivate);
+      return titleize(currentPrivate);
     } else {
-      return titleCase(browserCurrentPrivate);
+      return titleize(browserCurrentPrivate);
     }
   }
 

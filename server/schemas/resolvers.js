@@ -1,31 +1,37 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Project, Options } = require('../models');
+const { User, Project, Options, MessageTemplate } = require('../models');
 const { signToken, isLoggedIn } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (isLoggedIn(context)) {
-        const user = await User.findById(context.user._id);
-        return user;
+        return await User.findById(context.user._id);
       }
     },
     users: async (parent, args, context) => {
       if (isLoggedIn(context)) {
-        const users = await User.find({});
-        return users;
+        return await User.find({});
       }
     },
     options: async (parent, args, context) => {
       if (isLoggedIn(context)) {
-        const { options } = Options.findOne({user: context.user._id});
-        return options;
+        return await Options.findOne({'user': context.user._id});
       }
+    },
+    messageTemplate: async (parent, args, context) => {
+      if (isLoggedIn(context)) {
+        return await MessageTemplate.findOne({'user': context.user._id});
+      }
+    },
+    messageTemplates: async (parent, args, context) => {
+      return await MessageTemplate.find({});
     }
   },
   Mutation: {
     login: async (parent, args, context) => {
       const { email } = args;
+      console.log({ args });
       const user = await User.findOne({ email });
       if(!user) {
         throw new AuthenticationError('No user associated with this email');
@@ -44,23 +50,42 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addProject: async (parent, args, context) => {
+    addProject: async (parent, { project }, context) => {
       if (isLoggedIn(context)) {
-        const { _id, ...project } = args.project;
-        return await Project.create(project);
+        const { _id, ...proj } = project;
+        return await Project.create(proj);
       }
     },
-    updateProject: async (parent, args, context) => {
+    addMessageTemplate: async (parent, { messageTemplate }, context) => {
       if (isLoggedIn(context)) {
-        const { _id, ...project } = args.project;
-        return await Project.findByIdAndUpdate(_id, project, { new: true });
+        messageTemplate.user = context.user._id; // assign current user to messageTemplate
+        const { _id, ...messTemp } = messageTemplate;
+        const mt = await MessageTemplate.create(messTemp);
+        console.log({messTemp, mt});
+        return mt
       }
     },
-    updateOptions: async (parent, args, context) => {
+    addOptions: async (parent, { options }, context) => {
       if (isLoggedIn(context)) {
-        const { _id, ...options } = args.options;
-        // console.log({ ...options, user: context.user._id });
-        return await Options.findByIdAndUpdate(_id, { ...options, user: context.user._id }, { new: true, upsert: true });
+        return await Options.create(options);
+      }
+    },
+    updateProject: async (parent, { project }, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...proj } = project;
+        return await Project.findByIdAndUpdate(_id, proj, { new: true });
+      }
+    },
+    updateMessageTemplate: async (parent, { messageTemplate }, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...template} = messageTemplate;
+        return await MessageTemplate.findByIdAndUpdate(_id, { ...template }, { new: true });
+      }
+    },
+    updateOptions: async (parent, { options }, context) => {
+      if (isLoggedIn(context)) {
+        const { _id, ...opts} = options;
+        return await Options.findByIdAndUpdate(_id, { ...opts }, { new: true });
       }
     }
   }

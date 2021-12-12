@@ -61,17 +61,47 @@ const typeDefs = gql`
     skills: JSONObject
   }
 
+  type MessageTemplate {
+    _id: ID
+    user: ID
+    templateID: String
+    serviceID: String
+    userID: String
+    accessToken: String
+  }
+
+  input AddMessageTemplateInput {
+    templateID: String!
+    serviceID: String!
+    userID: String!
+    accessToken: String!
+  }
+
+  input UpdateMessageTemplateInput {
+    _id: ID!
+    user: ID!
+    templateID: String!
+    serviceID: String!
+    userID: String!
+    accessToken: String!
+  }
+
   type Query {
     user: User
     users: [User]
     options: Options
+    messageTemplate: MessageTemplate
+    messageTemplates: [MessageTemplate]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     register(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addProject(project: ProjectInput): Project
+    addMessageTemplate(messageTemplate: AddMessageTemplateInput): MessageTemplate
+    addOptions(options: OptionsInput): Options
     updateProject(project: ProjectInput): Project
+    updateMessageTemplate(messageTemplate: UpdateMessageTemplateInput): MessageTemplate
     updateOptions(options: OptionsInput): Options
   }
 `;

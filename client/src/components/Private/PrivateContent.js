@@ -5,6 +5,7 @@ import PrivateHeader from './partials/Header';
 import PrivatePortfolio from './pages/Portfolio';
 import PrivateAccount from './pages/Account';
 import PrivateOptions from './pages/Options';
+import PrivateMessageTemplate from './pages/MessageTemplate';
 
 import LocalStorage from '../../utils/LocalStorage';
 
@@ -43,6 +44,11 @@ function PrivateContent () {
         {
           isCurrent('options') && (
             <PrivateOptions />
+          )
+        }
+        {
+          isCurrent('Message-Template') && (
+            <PrivateMessageTemplate />
           )
         }
       </div>

@@ -62,6 +62,46 @@ mutation ($project: ProjectInput) {
 }
 `
 
+export const ADD_MESSAGE_TEMPLATE = gql`
+mutation ($messageTemplate: AddMessageTemplateInput) {
+  addMessageTemplate (messageTemplate: $messageTemplate) {
+    _id
+    user
+    templateID
+    serviceID
+    userID
+    accessToken
+  }
+}
+`
+
+export const UPDATE_MESSAGE_TEMPLATE = gql`
+mutation ($messageTemplate: UpdateMessageTemplateInput) {
+  updateMessageTemplate (messageTemplate: $messageTemplate) {
+    _id
+    user
+    templateID
+    serviceID
+    userID
+    accessToken
+  }
+}
+`
+
+export const ADD_OPTIONS = gql`
+mutation ($options: OptionsInput) {
+  addOptions (options: $options){
+    _id
+    user
+    title
+    brandImageUrl
+    featureImageUrl
+    bio
+    skills
+  }
+}
+`
+
 export const UPDATE_OPTIONS = gql`
 mutation ($options: OptionsInput) {
   updateOptions (options: $options){

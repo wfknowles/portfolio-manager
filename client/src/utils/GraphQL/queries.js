@@ -24,3 +24,29 @@ export const QUERY_OPTIONS = gql`
     }
   }
 `
+
+export const QUERY_MESSAGE_TEMPLATE = gql`
+  query {
+    messageTemplate {
+      _id
+      user
+      templateID
+      serviceID
+      userID
+      accessToken
+    }
+  }
+`
+
+export const QUERY_MESSAGE_TEMPLATES = gql`
+  query {
+    messageTemplates {
+      _id
+      user
+      templateID
+      serviceID
+      userID
+      accessToken
+    }
+  }
+`

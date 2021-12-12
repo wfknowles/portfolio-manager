@@ -1,11 +1,12 @@
 const db = require('./connection');
-const { User, Project, Options } = require('../models');
+const { User, Project, Options, MessageTemplate } = require('../models');
 
 db.once('open', async () => {
 
   await User.deleteMany();
   await Options.deleteMany();
   await Project.deleteMany();
+  await MessageTemplate.deleteMany();
 
   const user = await User.create({
     firstName: 'Will',
@@ -15,6 +16,16 @@ db.once('open', async () => {
   });
 
   console.log('user created!', {user});
+
+  const messageTemplate = await MessageTemplate.create({
+    user: user._id,
+    templateID: 'test',
+    serviceID: 'test',
+    userID: 'test',
+    accessToken: 'test'
+  });
+
+  console.log('messageTemplate created!', {messageTemplate});
 
   const project = await Project.create({
     user: user._id,

@@ -23,12 +23,13 @@ function PrivateMenu () {
     {name: 'portfolio'},
     {name: 'account'},
     {name: 'options'},
-    {name: 'Log-Out'}
+    {name: 'Log-Out'},
+    {name: 'Message-Template'}
   ];
 
-  useEffect(() => {
-    console.log({state});
-  }, [state])
+  // useEffect(() => {
+  //   console.log({state});
+  // }, [state])
 
   // get multiple properties from localStorage's state
   const [browserViewPrivateMenu, browserViewPrivateContent, browserLoggedIn] = LocalStorage.getState(['viewPrivateMenu', 'viewPrivateContent', 'loggedIn']);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import FormContact from '../../Form/FormContact.js';
 
 function Contact () {
 
@@ -7,7 +8,7 @@ function Contact () {
     <Container>
       <Row>
         <Col sm="12">
-          This is the contact page
+          <FormContact />
         </Col>
       </Row>
     </Container>
