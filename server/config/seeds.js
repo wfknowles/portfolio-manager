@@ -15,7 +15,7 @@ db.once('open', async () => {
     password: 'password12345'
   });
 
-  console.log('user created!', {user});
+  console.log('user created!', user);
 
   const messageTemplate = await MessageTemplate.create({
     user: user._id,
@@ -25,7 +25,7 @@ db.once('open', async () => {
     accessToken: 'test'
   });
 
-  console.log('messageTemplate created!', {messageTemplate});
+  console.log('messageTemplate created!', messageTemplate);
 
   const project = await Project.create({
     user: user._id,
@@ -41,11 +41,7 @@ db.once('open', async () => {
     }
   });
 
-  // project.tech.forEach((v,k) => {
-  //   console.log({k,v});
-  // });
-
-  console.log('project created!');
+  console.log('project created!', project);
 
   process.exit();
 });
