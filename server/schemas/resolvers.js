@@ -4,9 +4,14 @@ const { signToken, isLoggedIn } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
+    me: async (parent, args, context) => {
       if (isLoggedIn(context)) {
         return await User.findById(context.user._id);
+      }
+    },
+    user: async (parent, { user }, context) => {
+      if (isLoggedIn(context)) {
+        return await User.findById(user._id);
       }
     },
     users: async (parent, args, context) => {
@@ -86,6 +91,22 @@ const resolvers = {
       if (isLoggedIn(context)) {
         const { _id, ...opts} = options;
         return await Options.findByIdAndUpdate(_id, { ...opts }, { new: true });
+      }
+    },
+    updateMe: async (parent, args, context) => {
+      console.log({args})
+      if (isLoggedIn(context)) {
+        
+        // const { oldPassword, confirmPassword, ...u} = user;
+
+        // // if password is being changed, make sure oldPassword is right or remove password from update
+        // if ( u.password ) {
+        //   if (!context.user.isCorrectPassword(oldPassword)) {
+        //     delete u.password;
+        //   }
+        // }
+        
+        // return await User.findByIdAndUpdate(context.user._id, { u }, { new: true });
       }
     }
   }

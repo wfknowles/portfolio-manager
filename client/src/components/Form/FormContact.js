@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
+
 import { useQuery } from '@apollo/client';
 import { QUERY_MESSAGE_TEMPLATES } from '../../utils/GraphQL/queries';
 
-import FormInput from './FormInput';
-import FormResponse from './FormResponse';
-import ReactForms from '../../utils/ReactForms';
+import { FormInput, FormResponse, reduceStates } from '../../utils/ReactForms';
 import emailjs from 'emailjs-com';
-import './Form.css';
+// import './Form.css';
 
 function FormContact() {
   const form = useRef();
@@ -18,8 +17,7 @@ function FormContact() {
 
   const handleChange = (e) => {
 
-    const inputData = ReactForms.value(e);
-    const reducedState = ReactForms.reduce(formState, inputData);
+    const reducedState = reduceStates(e, formState); // reduced by ReactForms
 
     setFormState({
       ...formState,

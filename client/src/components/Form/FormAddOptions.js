@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-import FormInput from './FormInput.js';
-import ReactForms from '../../utils/ReactForms';
-import FormCheckboxArray from './FormCheckboxArray';
-
 import { useMutation, useQuery } from '@apollo/client';
-// import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import { SET_OPTIONS } from '../../utils/GlobalState/actions';
 import { QUERY_OPTIONS } from '../../utils/GraphQL/queries';
 import { UPDATE_OPTIONS } from '../../utils/GraphQL/mutations';
 import { techOptions } from '../../utils/staticData.js';
+
+import { FormInput, FormResponse, FormCheckboxGroup, reduceStates } from '../../utils/ReactForms';
 import LocalStorage from '../../utils/LocalStorage';
 
-import './Form.css';
+// import './Form.css';
 
 function FormAddOptions() {
-  // const [state, dispatch] = useAppContext();
+
   const [ formData, setFormData ] = useState({});
   // const { options } = formData;
   const { loading: queryLoading, data: queryData, error: queryError } = useQuery(QUERY_OPTIONS);
@@ -35,16 +32,8 @@ function FormAddOptions() {
     }
   }, [ queryData ])
 
-  // useEffect(() => {
-  //   console.log({formData})
-  // }, [ formData ]);
-
-  // should this all be changed to onBlur?
   const handleChange = (e) => {
-
-    // using ReactForms for retrieving and reducing form object
-    const inputData = ReactForms.value(e);
-    const reducedOptions = ReactForms.reduce(formData, inputData)
+    const reducedOptions = reduceStates(e, formData); // reduced by ReactForms
     if (reducedOptions) {
       setFormData({
         options: reducedOptions.options
@@ -118,7 +107,7 @@ function FormAddOptions() {
                 change={handleChange}
               />
 
-              <FormCheckboxArray data={techOptions} name="options.skills" klass="" change={handleChange}/>
+              <FormCheckboxGroup options={techOptions} name="options.skills" onChange={handleChange}/>
               
               {
                 mutationError &&

@@ -5,18 +5,13 @@ import NavBar from '../NavBar/NavBar';
 import FormLogin from '../Form/FormLogin';
 
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
-import {  
-  OPEN_CURRENT_PRIVATE,
-  TOGGLE_MENU,
-  TOGGLE_CONTENT,
-  LOG_OUT
-} from '../../utils/GlobalState/actions';
-import Auth from '../../utils/auth';
+import { OPEN_PRIVATE_CONTENT, CLOSE_PRIVATE_CONTENT, CLOSE_PRIVATE_MENU, LOG_OUT } from '../../utils/GlobalState/actions';
 import LocalStorage from '../../utils/LocalStorage';
+import Auth from '../../utils/Auth';
 
 function PrivateMenu () {
-
-  const [state, dispatch] = useAppContext();
+  
+  const [ state, dispatch ] = useAppContext();
   const { viewPrivateMenu, viewPrivateContent, currentPrivate, loggedIn } = state;
 
   const navItems = [
@@ -27,30 +22,15 @@ function PrivateMenu () {
     {name: 'Message-Template'}
   ];
 
-  // useEffect(() => {
-  //   console.log({state});
-  // }, [state])
-
-  // get multiple properties from localStorage's state
-  const [browserViewPrivateMenu, browserViewPrivateContent, browserLoggedIn] = LocalStorage.getState(['viewPrivateMenu', 'viewPrivateContent', 'loggedIn']);
-
   const navClickHandler = (selection) => {
 
     if (selection === 'Log-Out') {
 
-      // remove token from localStorage
       Auth.logout();
 
-      // set loggedIn to false
       dispatch({
         type: LOG_OUT
       });
-
-      LocalStorage.setState({
-        loggedIn: false
-      })
-      closePrivateContent();
-      closePrivateMenu();
 
     } else {
 
@@ -59,39 +39,35 @@ function PrivateMenu () {
     }
   }
 
-  // set state and localStorage properties
   const openPrivateContent = (value) => {
 
     LocalStorage.setState({
-      viewPublicContent: false,
+      currentPrivate: value,
       viewPrivateContent: true,
-      currentPrivate: value
+      viewPublicContent: false
     });
 
     dispatch({
-      type: OPEN_CURRENT_PRIVATE,
+      type: OPEN_PRIVATE_CONTENT,
       currentPrivate: value
     });
 
   }
 
-  // set state and localStorage properties
   const closePrivateContent = () => {
 
     LocalStorage.setState({
+      viewPublicContent: true,
       viewPrivateContent: false,
-      viewPublicContent: true
+      currentPrivate: undefined
     });
 
     dispatch({
-      type: TOGGLE_CONTENT,
-      viewPrivateContent: false,
-      viewPublicContent: true
+      type: CLOSE_PRIVATE_CONTENT
     });
 
   }
 
-  // set state and localStorage properties
   const closePrivateMenu = () => {
 
     LocalStorage.setState({
@@ -100,9 +76,7 @@ function PrivateMenu () {
     });
 
     dispatch({
-      type: TOGGLE_MENU,
-      viewPrivateMenu: false,
-      viewPublicContent: true
+      type: CLOSE_PRIVATE_MENU
     });
 
   }
@@ -111,23 +85,23 @@ function PrivateMenu () {
     <>
       <div className="private-menu-actions">
           {
-            ( viewPrivateContent || browserViewPrivateContent ) && (
+            viewPrivateContent && (
               <ActionButton className="fa fa-chevron-circle-left white" click={closePrivateContent} />
             )
           }
           {
-            ( (viewPrivateMenu && !viewPrivateContent) || (browserViewPrivateMenu && !browserViewPrivateContent)) && (
+            (( viewPrivateMenu && !viewPrivateContent )) && (
               <ActionButton className="fa fa-chevron-circle-right white" click={closePrivateMenu} />
             )
           }
       </div>
       {
-        ( !loggedIn && !browserLoggedIn ) && (
+        !loggedIn && (
           <FormLogin className="light mini"/>
         )
       }
       { 
-        ( ( loggedIn || browserLoggedIn ) && ( viewPrivateMenu || browserViewPrivateMenu ) ) && (
+        ( loggedIn && viewPrivateMenu ) && (
           <NavBar
             name="privateNav"
             navItems={navItems} 

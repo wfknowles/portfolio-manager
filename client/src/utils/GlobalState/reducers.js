@@ -2,10 +2,10 @@ import { useReducer } from 'react';
 import {
   SET_PROJECT,
   SET_OPTIONS,
-  TOGGLE_MENU,
-  TOGGLE_CONTENT,
   OPEN_MENU,
-  OPEN_CURRENT_PRIVATE,
+  OPEN_PRIVATE_CONTENT,
+  CLOSE_PRIVATE_CONTENT,
+  CLOSE_PRIVATE_MENU,
   LOG_IN,
   LOG_OUT
 } from './actions';
@@ -23,44 +23,43 @@ export const reducer = (state, action) => {
           ...state,
           options: action.options
         };
-      case TOGGLE_MENU:
-        return {
-          ...state,
-          viewPrivateMenu: action.viewPrivateMenu,
-          viewPrivateContent: action.viewPrivateContent
-        };
-      case TOGGLE_CONTENT:
-        return {
-          ...state,
-          viewPrivateContent: action.viewPrivateContent,
-          viewPublicContent: action.viewPublicContent
-        };
       case OPEN_MENU:
         return {
           ...state,
           viewPrivateMenu: true
         };
-      case OPEN_CURRENT_PRIVATE:
+      case OPEN_PRIVATE_CONTENT:
         return {
           ...state,
           currentPrivate: action.currentPrivate,
           viewPrivateContent: true,
           viewPublicContent: false
-        };
+        }
+      case CLOSE_PRIVATE_CONTENT:
+        return {
+          ...state,
+          currentPrivate: undefined,
+          viewPrivateContent: false,
+          viewPublicContent: true
+        }
+      case CLOSE_PRIVATE_MENU:
+        return {
+          ...state,
+          viewPrivateMenu: false
+        }
       case LOG_IN:
         return {
           ...state,
-          loggedIn: true,
-          currentUser: action.currentUser
+          loggedIn: true
         };
       case LOG_OUT:
         return {
           ...state,
-          currentUser: false,
-          currentPrivate: false,
+          loggedIn: false,
+          currentPrivate: undefined,
           viewPrivateMenu: false,
           viewPrivateContent: false,
-          viewPublicContent:true
+          viewPublicContent: true
         };
 
       default:

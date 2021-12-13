@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAppContext } from '../../utils/GlobalState/GlobalState';
 
 import PrivateHeader from './partials/Header';
 import PrivatePortfolio from './pages/Portfolio';
@@ -7,31 +6,29 @@ import PrivateAccount from './pages/Account';
 import PrivateOptions from './pages/Options';
 import PrivateMessageTemplate from './pages/MessageTemplate';
 
-import Auth from '../../utils/auth';
-import LocalStorage from '../../utils/LocalStorage';
+import { useAppContext } from '../../utils/GlobalState/GlobalState';
+import { LOG_OUT } from '../../utils/GlobalState/actions';
+import Auth from '../../utils/Auth';
 
 function PrivateContent () {
-  const [ state ] = useAppContext();
-  const { currentPrivate, loggedIn } = state;
-  const [ browserCurrentPrivate, browserLoggedIn] = LocalStorage.getState('currentPrivate', 'loggedIn');
+
+  Auth.loggedIn();
+
+  const [ { currentPrivate, loggedIn }, dispatch ] = useAppContext();
+  
+  if ( !loggedIn ) {
+    dispatch({
+      type: LOG_OUT
+    });
+  }
 
   const isCurrent = (value) => {
-    // if currentPrivate or browserCurrentPrivate are equal to value
-    if (currentPrivate === value || browserCurrentPrivate === value) {
+    if (currentPrivate === value) {
       return true;
     } else {
       return false;
     }
-
   }
-
-  const loggedInOrRedirect = () => {
-    if (!loggedIn && !browserLoggedIn || Auth.isTokenExpired()) {
-      window.location.assign('/');
-    }
-  }
-
-  loggedInOrRedirect();
 
   return (
 

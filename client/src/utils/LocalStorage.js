@@ -8,6 +8,7 @@ class LocalStorage {
   }
 
   setState(incomingState) {
+    
     const state = localStorage.getItem('state');
     const parsedState = JSON.parse(state);
     let reducedState = {};
@@ -27,12 +28,14 @@ class LocalStorage {
     const state = localStorage.getItem('state');
     // convert state into JSON
     const parsedState = JSON.parse(state);
-      
-    if (typeof prop === 'string') {
+    const isString = typeof prop === 'string';
+    const isArray = Array.isArray(prop);
+
+    if (isString) {
       // if the input value is a string, get the single property
       return parsedState[prop];
 
-    } else if (Array.isArray(prop)) {
+    } else if (isArray) {
 
       // if the input value is an array, get multiple properties
       let Arr = [];
@@ -57,18 +60,6 @@ class LocalStorage {
     
   }
 
-//   getStateProp(prop) {
-//     const state = localStorage.getItem('state');
-//     if (state) {
-//       const parsedState = JSON.parse(state);
-//       if (parsedState) {
-//         if (parsedState[prop]) {
-//           return parsedState[prop];
-//         }
-//       }
-//     }
-//     return undefined;
-//   }
 }
 
 export default new LocalStorage();

@@ -13,6 +13,15 @@ const typeDefs = gql`
     displayName: String
   }
 
+  input UpdateUserInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    oldPassword: String
+    password: String
+    confirmPassword: String
+  }
+
   type Auth {
     token: ID
     user: User
@@ -87,6 +96,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    me: User
     user: User
     users: [User]
     options: Options
@@ -103,6 +113,7 @@ const typeDefs = gql`
     updateProject(project: ProjectInput): Project
     updateMessageTemplate(messageTemplate: UpdateMessageTemplateInput): MessageTemplate
     updateOptions(options: OptionsInput): Options
+    updateMe(user: UpdateUserInput): User
   }
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { titleize, addClass } from '../../utils/helpers';
+import { titleize, addClass } from '../helpers';
+import '../style.css'
 
 function FormInput (props) {
 

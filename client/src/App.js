@@ -41,8 +41,8 @@ function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <AppProvider>
-        <Public />
-        <Private />
+          <Public />
+          <Private />
       </AppProvider>
     </ApolloProvider>
   )

@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form } from 'react-bootstrap';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_MESSAGE_TEMPLATE, UPDATE_MESSAGE_TEMPLATE } from '../../utils/GraphQL/mutations';
 import { QUERY_MESSAGE_TEMPLATE } from '../../utils/GraphQL/queries';
-import FormInput from './FormInput.js';
-import ReactForms from '../../utils/ReactForms';
-// import LocalStorage from '../../utils/LocalStorage';
+import { FormInput, FormResponse, reduceStates } from '../../utils/ReactForms';
 
-// import Auth from '../../utils/auth';
 
 function FormMessageTemplate() {
 
-  // const [ state, dispatch ] = useAppContext();
-  // using component state for user input values
-  const [ messageTemplateState, setMessageTemplateState] = useState({messageTemplate: {}});
+  const [ formState, setFormState] = useState({messageTemplate: {}});
   const { loading: queryLoading, data: queryData, error: queryError } = useQuery(QUERY_MESSAGE_TEMPLATE);
   const [ addMessageTemplate, { error: addError } ] = useMutation(ADD_MESSAGE_TEMPLATE);
   const [ updateMessageTemplate, { error: updateError } ] = useMutation(UPDATE_MESSAGE_TEMPLATE);
@@ -21,11 +16,10 @@ function FormMessageTemplate() {
 
   const handleChange = (e) => {
 
-    const inputData = ReactForms.value(e);
-    const reducedMessageTemplate = ReactForms.reduce(messageTemplateState, inputData);
+    const reducedMessageTemplate = reduceStates(e, formState);
 
-    setMessageTemplateState({
-      ...messageTemplateState,
+    setFormState({
+      ...formState,
       ...reducedMessageTemplate
     });
 
@@ -41,7 +35,7 @@ function FormMessageTemplate() {
       // Update
       updateMessageTemplate({
         variables: {
-          messageTemplate: { ...messageTemplate, ...messageTemplateState.messageTemplate}
+          messageTemplate: { ...messageTemplate, ...formState.messageTemplate}
         }
       });
 
@@ -50,7 +44,7 @@ function FormMessageTemplate() {
       // Create
       addMessageTemplate({
         variables: {
-          ...messageTemplateState
+          ...formState
         }
       });
 

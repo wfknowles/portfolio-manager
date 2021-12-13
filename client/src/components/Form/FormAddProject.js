@@ -1,9 +1,10 @@
 import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-import FormInput from './FormInput.js';
-import FormCheckboxArray from './FormCheckboxArray';
-import ReactForms from '../../utils/ReactForms';
+// import FormInput from './FormInput.js';
+// import FormCheckboxArray from './FormCheckboxArray';
+// import ReactForms from '../../utils/ReactForms';
+import { FormInput, FormResponse, FormCheckboxGroup, reduceStates } from '../../utils/ReactForms';
 
 import { useMutation } from '@apollo/client';
 import { useAppContext } from '../../utils/GlobalState/GlobalState';
@@ -23,15 +24,15 @@ function FormAddProject({toggle}) {
   const handleChange = (e) => {
 
     // using ReactForms for retrieving and reducing form object
-    const inputData = ReactForms.value(e);
-    const reducedProject = ReactForms.reduce({project}, inputData);
+    // const inputData = ReactForms.value(e);
+    // const reducedProject = ReactForms.reduce({project}, inputData);
 
-    if (reducedProject) {
-      dispatch({
-        type: SET_PROJECT,
-        reducedProject
-      });
-    }
+    // if (reducedProject) {
+    //   dispatch({
+    //     type: SET_PROJECT,
+    //     reducedProject
+    //   });
+    // }
   }
 
   const handleSubmit = async (e) => {
@@ -82,7 +83,7 @@ function FormAddProject({toggle}) {
         placeholder="Lorem ipsum dolar sit amet"
         change={handleChange}
       />
-      <FormCheckboxArray data={techOptions} name="project.tech" klass="" change={handleChange}/>
+      <FormCheckboxGroup options={techOptions} name="project.tech" onChange={handleChange}/>
       <FormInput 
         klass=""
         type="text"

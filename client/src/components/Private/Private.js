@@ -1,59 +1,53 @@
 import React from 'react';
-
 import PrivateMenu from './PrivateMenu';
 import PrivateContent from './PrivateContent';
-
-import { useAppContext } from '../../utils/GlobalState/GlobalState';
-import LocalStorage from '../../utils/LocalStorage';
 import { addClass } from '../../utils/helpers';
-
+import { useAppContext } from '../../utils/GlobalState/GlobalState';
 import './Private.css';
 
 function Private () {
 
-  const [ state ] = useAppContext();
-  const { viewPrivateMenu, viewPrivateContent, loggedIn } = state;
-
-  // get multiple properties from localStorage's state
-  const [ browserViewPrivateMenu, browserViewPrivateContent, browserLoggedIn ] = LocalStorage.getState(['viewPrivateMenu', 'viewPrivateContent', 'loggedIn']);
+  const [{ viewPrivateMenu, viewPrivateContent, loggedIn }] = useAppContext();
   
   const getPrivateClassName = () => {
-    let klass = "";
+    let className = "";
 
-    if ( ( viewPrivateMenu && viewPrivateContent ) || ( browserViewPrivateMenu && browserViewPrivateContent ) ) {
+    if ( viewPrivateMenu && viewPrivateContent ) {
       // if private menu and private content are open
-      klass = "open";
+      className = "open";
 
-    } else if ( viewPrivateMenu || browserViewPrivateMenu) {
+    } else if ( viewPrivateMenu ) {
       // if private menu is open
-      klass = 'menu-open';
+      className = 'menu-open';
 
     } else {
 
       // private is closed
-      klass = 'closed';
+      className = 'closed';
 
     }
 
-    return klass;
+    return className;
   }
 
   const privateClassName = getPrivateClassName();
 
   return (
+
     <>
+
       {
-        ( ( loggedIn || browserLoggedIn ) || ( viewPrivateMenu || browserViewPrivateMenu ) ) && (
+        ( viewPrivateMenu || ( loggedIn && viewPrivateContent ) ) && (
           <div className={addClass('private', privateClassName)} >
             {
-              ( viewPrivateMenu || browserViewPrivateMenu ) && (
+              viewPrivateMenu && (
                 <div className="private-menu">
                   <PrivateMenu />
                 </div>
               )
             }
             {
-              ( ( loggedIn || browserLoggedIn ) && ( viewPrivateContent || browserViewPrivateContent ) ) && (
+              ( loggedIn && viewPrivateContent ) && (
                 <div className="private-content">
                   <PrivateContent />
                 </div>
@@ -62,6 +56,7 @@ function Private () {
           </div>
         )
       }
+
     </>
     
   )

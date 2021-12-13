@@ -1,4 +1,5 @@
 import decode from 'jwt-decode';
+import LocalStorage from './LocalStorage';
 
 class Auth {
 
@@ -10,19 +11,8 @@ class Auth {
         return decode(this.getToken());
     }
 
-    getID() {
-        const auth = this.getDecodedToken();
-        return auth.data._id;
-    }
-
-    getEmail() {
-        const auth = this.getDecodedToken();
-        return auth.data.email;
-    }
-
-    getDisplayName() {
-        const auth = this.getDecodedToken();
-        return `${auth.data.firstName} ${auth.data.lastName}`;
+    getUser() {
+      return decode(this.getToken());
     }
 
     loggedIn() {
@@ -34,6 +24,15 @@ class Auth {
         try {
           const decoded = decode(token);
           if (decoded.exp < Date.now() / 1000) {
+
+            LocalStorage.setState({
+              loggedIn: false,
+              currentPrivate: undefined,
+              viewPrivateMenu: false,
+              viewPrivateContent: false,
+              viewPublicContent: true
+            });
+
             return true;
           } else return false;
         } catch (err) {
@@ -42,13 +41,29 @@ class Auth {
     }
 
     login(idToken) {
-        localStorage.setItem('id_token', idToken);
-        // window.location.assign('/');
+
+      localStorage.setItem('id_token', idToken);
+
+      LocalStorage.setState({
+          loggedIn: true
+      });
+
     }
 
     logout() {
-        localStorage.removeItem('id_token');
-        // window.location.assign('/');
+
+      localStorage.removeItem('id_token');
+
+      LocalStorage.setState({
+        loggedIn: false,
+        currentPrivate: undefined,
+        viewPrivateMenu: false,
+        viewPrivateContent: false,
+        viewPublicContent: true
+      });
+
+      window.location.assign('/');
+
     }
 }
 

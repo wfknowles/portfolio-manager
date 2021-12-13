@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const UPDATE_ME = gql`
+  mutation ($user: UpdateUserInput ) {
+    me (user: $user) {
+      _id
+      email
+      firstName
+      lastName
+      displayName
+    }
+  }
+`
+
 export const LOGIN = gql`
     mutation ($email: String!, $password: String!) {
         login (email: $email, password: $password) {
